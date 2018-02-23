@@ -1,0 +1,11 @@
+{%assign collectionName = collection.title | remove: ' &' | remove: ' All'| replace: ' ', '-'%}
+
+
+<div class="side-heading extra-large-gap">
+  <h2>Categories</h2>
+</div>
+{% for tag in collections[collectionName].tags %}
+<div class="side-item">
+  <a class="link" href="/collections/{{collection.title | remove: ' &' | remove: ' All'| replace: ' ', '-'| downcase}}/{{tag | replace: ' ', '-' }}"><h3>{{tag}}</h3></a>
+</div>
+{% endfor %}

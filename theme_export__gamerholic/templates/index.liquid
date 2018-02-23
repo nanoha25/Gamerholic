@@ -1,0 +1,41 @@
+
+<div id="owl-main" class="owl-carousel owl-theme">
+  {% for product in collections['banner-images'].products %}
+  <div class="item" style="background-color:{{ product.description }}">
+    <div class="container" style="margin: auto">
+      <a href="{{product.title}}">
+        <img src="{{product.images[0].src | product_img_url: 'master'}}" alt="{{ product.title }}">
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+<div class="container">
+  
+  {% include 'image-row-1' %}
+  {% assign owlTitle = 'HOT PRODUCTS' %}
+  {% assign owlID = 'owl-hot' %}
+  {% assign owlCollection = 'hot-products' %}
+  {% assign owlLimit = 15 %}
+  {% include 'owl-slideshow' %}
+ 
+  <img id="home-banner" src="https://cdn.shopify.com/s/files/1/0987/8934/t/13/assets/16777117_10212794934332037_1831970029_o.jpg?5549651007318337498">
+  
+
+  
+  {% assign owlTitle = 'NEW PRODUCTS' %}
+  {% assign owlID = 'owl-new' %}
+  {% assign owlCollection = 'new-products' %}
+  {% assign owlLimit = 15 %}
+  {% include 'owl-slideshow' %}
+  
+  {% include 'blog-row' %}
+  
+
+  
+  	
+</div>
+
