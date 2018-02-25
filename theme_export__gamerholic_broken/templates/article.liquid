@@ -1,0 +1,89 @@
+<div class="container blog-page extra-large-gap">
+  <div class="row">
+    <div class="col-sm-0"></div>
+    <div class="col-xs-0 col-sm-2">
+      <div class="side-heading extra-large-gap">
+        <h2>Recent Posts</h2>
+      </div>
+      {% for article in blogs['news'].articles limit:5 %}
+      <div class="side-item">
+        <a class="link" href="{{article.url}}"><h3>{{article.title}}</h3></a>
+      </div>
+      {% endfor %}
+
+    </div>
+    
+    <div class="col-xs-0 col-sm-10">
+      <a href="http://www.nngames.com.au/blogs/news" class="link"><h1 id="heading">GAMERHOLIC BLOG</h1></a>
+ 
+      <div class="article-item xl-gap">
+        <p class="article-date secondary">{{ article.published_at | date: "%a, %b %d, %y" }}</p>
+        <h2 class="article-title">{{article.title}}</h2>
+        <div class="article-content">{{article.content}}</div>
+      	<p class="secondary">
+        {% assign tagNum = article.tags.size | minus: 1%}
+        {% for tag in article.tags %}
+          {% if article.tags[tagNum] == tag%}
+        	{{ tag }}
+          {% else %}
+          	{{ tag }}, 
+          {% endif %}
+        
+        {% endfor %}
+        </p>
+      </div>
+      
+      <h2 class="comments-title xl-gap">Comments</h2>
+   	  {% for comment in article.comments %}
+        <div class="comment l-gap">
+          <p class="article-date secondary">{{ comment.created_at | date: "%a, %b %d, %y" }}</p>
+	      <h3 class="author">{{ comment.author }} says..</h3>
+          <h3 class="comment-content">{{ comment.content }}</h3>
+        </div>
+      {% endfor %}
+      
+      {% if article.comments_count == 0 %}
+      <div class="xl-gap" style="border-top: 1px solid #ddd"></div>
+      {% endif %}
+    
+      <h2 class="comments-title xl-gap">Leave a Comment</h2>
+      {% form "new_comment", article %}
+      <p>
+        <input style="display:none" type="text" name="comment[author]" id="comment-author" value="Jack Skelton" />
+      </p>
+      <p>
+        <input style="display:none" type="email" name="comment[email]" id="comment-email" value="jack.s1995@live.com.au" />
+      </p>
+
+      <p>
+        <textarea required   name="comment[body]" id="comment-body">{{ form.body }}</textarea>
+      </p>
+
+      <input id="submit-comment"  type="submit" value="Post Comment" /> 
+
+      {% endform %}
+    </div>
+    
+
+  </div>
+  {% assign owlTitle = 'HOT PRODUCTS' %}
+  {% assign owlID = 'owl-hot' %}
+  {% assign owlCollection = 'hot-products' %}
+  {% assign owlLimit = 15 %}
+  {% include 'owl-slideshow' %}
+  
+
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+
+

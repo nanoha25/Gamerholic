@@ -1,0 +1,62 @@
+{% comment %}
+Re-use the 'rte' class wherever you output content that was added by a merchant using
+the Rich Text Editor ( 'rte' stands for rich text editor ).
+Style all HTML elements in that content the same way across the board.
+Use the 'rte' class in your CSS to help maintain that consistency.
+Example: the h2 element should have the same size and color in:
+- product descriptions
+- collection descriptions
+- 'page' pages' content
+- blog post
+{% endcomment %}
+
+{% form 'contact' %}
+<div class="container" id="contact-page">
+  <div style="max-width: 800px; margin:auto">
+  <h1 class="heading">{{page.title}}</h1>
+  {% if form.posted_successfully? %}
+    <div class="successForm feedback">
+      Success! Your message has been sent. We will reply ASAP.
+    </div>
+  {% endif %}
+  <h3>{{page.content}}</h3>
+
+  {% if form.errors %}
+  <div class="errorForm feedback">
+    <!-- {{ form.errors.size }} or {{ form.errors | size }} -->
+    <p>Your contact form has {{ form.errors | size | pluralize: "an error", "a few errors" }}. To submit your form, make the following changes and try again:</p>
+    {% for field in form.errors %}
+      <p>The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div id="contactFormWrapper">
+    <p>
+      <input type="text" placeholder="Name" required id="contactFormName" name="contact[name]">
+    </p>
+    <p>
+      <input type="email" placeholder="Email" required id="contactFormEmail" name="contact[email]">
+    </p>
+    <p>
+      <input type="telephone" placeholder="Phone" id="contactFormTelephone" name="contact[phone]">
+    </p>
+    <p>
+      <textarea required rows="10" placeholder="Message" id="contactFormMessage" name="contact[body]"></textarea>
+    </p>
+    <p>
+      <input type="submit" class="blue-button" id="contactFormSubmit" value="Send" />
+    </p>
+  </div>
+  </div>
+</div>
+
+  {% endform %}
+
+  <style>
+  .contact-form {margin:1em 0}
+  .feedback {padding:0.5em 0.7em;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px}
+  .feedback p {padding:0.5em 0 !important;margin:0 !important}
+  .successForm {background:#bde0a8;color:green}
+  .errorForm {background:#eebdbd;color:red}
+  </style>

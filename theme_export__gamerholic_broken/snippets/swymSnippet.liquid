@@ -10,9 +10,9 @@
     window.SwymProductInfo.variants = window.SwymProductInfo.product.variants;
     var piu = {{ product.featured_image | json }};
     {% if product.selected_variant %}
-    {% assign currentVariant = product.selected_variant%}
-    {% else %}
-    {% assign currentVariant = product.variants[0] %}
+      {% assign currentVariant = product.selected_variant%}
+        {% else %}
+          {% assign currentVariant = product.variants[0] %}
     {% endif %}
     {% for variant in product.variants %}
       {% if variant.selected %}
@@ -40,10 +40,13 @@
     window.SwymPageData = product_data;
     {% elsif collection %}
     var collection = {{ collection | json }};
-    if (typeof collection === "undefined" || collection == null || collection.toString().trim() == ""){
+    if (typeof collection === "undefined" || collection == null || collection.toString().trim() == "")
+    {
       var unknown = {et: 0};
       window.SwymPageData = unknown;
-    }else{
+    }
+    else
+    {
       var image = "";
       if (typeof collection.image === "undefined" || collection.image == null || collection.image.toString().trim() == ""){}
       else{image = collection.image.src;}

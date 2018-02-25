@@ -4,14 +4,14 @@
    Most theme settings should be stored in Sassy CSS variables here, for reuse.
    ========================================================================== */
 /*!theme settings */
-$site-max-width:          60 * 16px;
-$breakpoint-small-screen: 30 * 16px;
-$gutter:                  1 *  16px; 
-$background-color:        #e6ebeb;
-$text-color:              #555555;
-$link-color:              #b5792b;
-$base-font-family:        'Source Sans Pro', sans-serif;
-$base-font-size:          16px;
+$site-max-width:          60 * {{ settings.base_font_size }};
+$breakpoint-small-screen: 30 * {{ settings.base_font_size }};
+$gutter:                  1 *  {{ settings.base_font_size }}; 
+$background-color:        {{ settings.background_color }};
+$text-color:              {{ settings.text_color }};
+$link-color:              {{ settings.link_color }};
+$base-font-family:        {{ settings.base_font_family }};
+$base-font-size:          {{ settings.base_font_size }};
 $heading-font-family:     $base-font-family;
 $heading-font-weight:     600;
 
@@ -173,7 +173,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: url(//cdn.shopify.com/s/files/1/0987/8934/t/18/assets/arrow-down.svg?2952871975840400404) right 0.4em center no-repeat;
+  background: url({{ 'arrow-down.svg' | asset_url }}) right 0.4em center no-repeat;
   background-color: darken( $background-color, 7% );
 }
 
