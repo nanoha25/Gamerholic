@@ -5,7 +5,7 @@
 <div class="container">
   <div class="product-page">
     <h1 class="title extra-large-gap">{{product.title}}</h1>
-    
+
     <div class="row extra-large-gap #main">
       <div class="col-sm-1"></div>
       <div class="col-sm-5">
@@ -21,15 +21,15 @@
           {% assign sale = false %}
           {% if product.compare_at_price_min > 0 and product.price != product.compare_at_price_min %}
             {% assign sale = true %}
-          {% endif %} 
-         
-          
+          {% endif %}
+
+
           {% if sale %}
 			<h2 class="old-price">{{ product.compare_at_price_min | money}}</h2>
-		  {% endif %}    
+		  {% endif %}
           <h2 class="price">{{ product.price | money }}</h2>
-          
-          
+
+
           <!-- Begin Afterpay Code v2.0.2 -->
             {% assign afterpay_minimum_value_in_cents = 1 %}
             {% assign afterpay_maximum_value_in_cents = 100000 %}
@@ -44,10 +44,10 @@
             {% if afterpay_count_eligible_variants > 0 %}
               <p class="afterpay-paragraph" style="display:{% if product.selected_or_first_available_variant.available and product.selected_or_first_available_variant.price >= afterpay_minimum_value_in_cents and product.selected_or_first_available_variant.price < afterpay_maximum_value_in_cents %}block{% else %}none{% endif %};" data-product-id="{{ product.id }}">
                 or make 4 interest-free payments of
-                <span class="afterpay-instalments">{{ product.selected_or_first_available_variant.price | divided_by: 4.0 | round | money_with_currency }}</span> fortnightly with 
+                <span class="afterpay-instalments">{{ product.selected_or_first_available_variant.price | divided_by: 4.0 | round | money_with_currency }}</span> fortnightly with
                 <a style="display:inline-block; margin-bottom: 10px;" target="_blank" href="https://www.afterpay.com.au/terms">
-                  <img style="vertical-align:bottom" width="100" alt="Afterpay" src="https://www.afterpay.com.au/wp-content/themes/afterpay/assets/img/logo_scroll.png" /> 
-                  <span style="font-size:12px"> <u>More info</u> </span>  
+                  <img style="vertical-align:bottom" width="100" alt="Afterpay" src="https://www.afterpay.com.au/wp-content/themes/afterpay/assets/img/logo_scroll.png" />
+                  <span style="font-size:12px"> <u>More info</u> </span>
                 </a>
               </p>
               {% if product.price_varies or afterpay_count_eligible_variants < product.variants.size %}
@@ -134,28 +134,28 @@
               {% endif %}
             {% endif %}
             <!-- End Afterpay Code -->
-          
-          
+
+
           <div class="line-seperator"></div>
-          
-          {% if product.variants.first.inventory_quantity %}
-            <h3>Stock available: {{product.variants.first.inventory_quantity}} </h3>
+
+          {% if product.variants.inventory_quantity %}
+            <h3>Stock available: {{product.variants.inventory_quantity}} </h3>
           {% else %}
             <h3>Stock available: Unlimited!</h3>
           {% endif %}
           <div class="line-seperator"></div>
-          
+
  		  {% if preorder %}
             <h3>Date released: {{product.variants.first.barcode}} </h3>
             <div class="line-seperator"></div>
           {% endif %}
-          
+
           {% if product.available %}
             <form method="post" action="/cart/add">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
               <input type="hidden" name="return_to" value="back" />
               <select id="quantity" name="quantity">
-              {% if product.variants.first.inventory_quantity < 10 %}  
+              {% if product.variants.first.inventory_quantity < 10 %}
                 {% for i in (1..product.variants.first.inventory_quantity) %}
                   <option value="{{ i }}">{{ i }}</option>
                 {% endfor %}
@@ -176,30 +176,30 @@
               {% else %}
               	<input style="margin-left: 7px" type="submit" value="Add To Cart" id="addToCart" />
               {% endif %}
-               
+
             </form>
           {% else %}
 			<input style="margin-left: 7px" type="submit" value="Out of Stock" id="outOfStock" />
 			<div class="line-seperator"></div>
             <h3>Check back soon! We are constantly restocking.</h3>
           {% endif %}
-          
-          
-         
-          
+
+
+
+
        </div>
-        
+
       </div>
     </div>
-    
+
     <div class="row extra-large-gap">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
         <ul class="tab">
           <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Description')" id="defaultOpen">Description</a></li>
           <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</a></li>
-            
-          
+
+
         </ul>
         <div id="Description" class="tabcontent">
           {{ product.description }}
@@ -226,32 +226,32 @@
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
         </script>
-      </div>            
+      </div>
     </div>
-    
-    
+
+
     {% assign owlCollection = 'hot-products' %}
     {% for collection in product.collections %}
       {% if collection.title != 'Hot Products' and collection.title != 'Newest Products' %}
    		{% assign owlCollection = collection.handle %}
       {% endif %}
     {% endfor %}
-    
+
     {% assign owlTitle = 'RELATED PRODUCTS' %}
     {% assign owlID = 'owl-related' %}
     {% assign owlLimit = 15 %}
     {% assign owlProduct = product.title %}
     {% include 'owl-slideshow-related' %}
-    
+
   </div>
-  
+
 </div>
 
 <script>
   $(document).ready(function() {
- 
+
   var owl = $("#owl-related");
- 
+
   owl.owlCarousel({
     slideSpeed : 300,
     paginationSpeed : 400,
@@ -259,7 +259,7 @@
     stopOnHover: true,
     pagination: false
   });
- 
+
   // Custom Navigation Events
   $(".owl-related-next").click(function(){
     owl.trigger('owl.next');
@@ -269,4 +269,3 @@
   })
 });
 </script>
- 
