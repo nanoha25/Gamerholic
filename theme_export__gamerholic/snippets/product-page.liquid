@@ -138,13 +138,13 @@
 
           <div class="line-seperator"></div>
 
-          {% if product.variants.inventory_quantity %}
-            <h3>Stock available: {{product.variants.inventory_quantity}} </h3>
+          {% if product.variants.first.inventory_quantity %}
+            <h3>Stock available: {{product.variants.first.inventory_quantity}} </h3>
           {% else %}
             <h3>Stock available: Unlimited!</h3>
           {% endif %}
           <div class="line-seperator"></div>
-
+          
  		  {% if preorder %}
             <h3>Date released: {{product.variants.first.barcode}} </h3>
             <div class="line-seperator"></div>
