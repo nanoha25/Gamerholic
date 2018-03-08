@@ -160,6 +160,12 @@
                   {% endif %}
                 {% endfor %}
                </select>
+
+               {% if settings.product_quantity_enable %}
+                 <label for="quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+                 <input type="number" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+               {% endif %}
+
               {% if preorder %}
               	<input style="margin-left: 7px" type="submit" value="Pre-Order" id="addToCart" />
                 <div class="line-seperator"></div>
