@@ -33,7 +33,7 @@
             {% endif %}
             {% if afterpay_count_eligible_variants > 0 %}
               <p class="afterpay-paragraph" style="display:{% if product.selected_or_first_available_variant.available and product.selected_or_first_available_variant.price >= afterpay_minimum_value_in_cents and product.selected_or_first_available_variant.price < afterpay_maximum_value_in_cents %}block{% else %}none{% endif %};" data-product-id="{{ product.id }}">
-                or make 4 interest-free payments of
+                Pay in full or make 4 interest-free payments of
                 <span class="afterpay-instalments">{{ product.selected_or_first_available_variant.price | divided_by: 4.0 | round | money_with_currency }}</span> fortnightly with
                 <a style="display:inline-block; margin-bottom: 10px;" target="_blank" href="https://www.afterpay.com.au/terms">
                   <img style="vertical-align:bottom" width="100" alt="Afterpay" src="https://www.afterpay.com.au/wp-content/themes/afterpay/assets/img/logo_scroll.png" />
