@@ -45,6 +45,7 @@
     "checkout_use_body_background_image": false,
     "checkout_use_sidebar_background_image": false,
     "customer_layout": "theme",
+    "product_quantity_enable": true,
     "content_for_index": []
   },
   "presets": {
