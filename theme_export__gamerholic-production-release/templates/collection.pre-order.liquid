@@ -1,0 +1,153 @@
+{% paginate collection.products by 50 %}
+{% assign now = 'now' | date: "%b" | downcase %}
+{% assign month = current_tags[0] | downcase%}
+{% if month == '' %}
+  {% assign month = now %}
+{% endif %}
+
+
+{% if month == '1'%}
+  {% assign month = 'jan' %}
+{% elsif month == '2'%}
+  {% assign month = 'feb' %}
+{% elsif month == '3'%}
+  {% assign month = 'mar' %}
+{% elsif month == '4' %}
+  {% assign month = 'apr' %}
+{% elsif month == '5' %}
+  {% assign month = 'may' %}
+{% elsif month == '6'%}
+  {% assign month = 'jun' %}
+{% elsif month == '7'%}
+  {% assign month = 'jul' %}
+{% elsif month == '8'%}
+  {% assign month = 'aug' %}
+{% elsif month == '9'%}
+  {% assign month = 'sep' %}
+{% elsif month == '10'%}
+  {% assign month = 'oct' %}
+{% elsif month == '11'%}
+  {% assign month = 'nov' %}
+{% elsif month == '12'%}
+  {% assign month = 'dec' %}
+{% endif %}
+
+<div class="preorder-page">
+  <div class="container">
+    <h1 class="heading xl-gap">Pre-Order</h1>  
+    <h3 class="sub-heading">Want a product shipped to you as soon as it's released? Then checkout our catalog below for the latest pre-order products available.</h3>
+
+    <div id="month-row" class='m-gap'>
+      <div class="row">
+        <div class="col-sm-3">
+          {% assign tempMonth = 'jan' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+          {% assign tempMonth = 'feb' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+          {% assign tempMonth = 'mar' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          {% assign tempMonth = 'apr' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+          {% assign tempMonth = 'may' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+          {% assign tempMonth = 'jun' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          {% assign tempMonth = 'jul' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+          {% assign tempMonth = 'aug' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+          {% assign tempMonth = 'sep' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          {% assign tempMonth = 'oct' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+          {% assign tempMonth = 'nov' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+          {% assign tempMonth = 'dec' %}
+          <div class="month-button">
+            <button {%if tempMonth == month%}class="dark-blue-button"{%else%}class="red-button"{%endif%} type="button" onclick="location.href='/collections/pre-order/{{tempMonth}}';">{{tempMonth | capitalize}}</button>
+          </div>
+        </div>
+      </div>
+      <p class="secondary xl-gap">Showing pre-orders for: <span class="blue">{{month | capitalize}}</span></p>
+    </div>
+
+    <div class="row">
+    {%for product in collections['pre-order'].products%}
+      {%assign productDate = product.variants.first.barcode | split: '/'%}
+      
+      {% if productDate[1] == '1'%}
+        {% assign productDate = 'jan' %}
+      {% elsif productDate[1] == '2'%}
+        {% assign productDate = 'feb' %}
+      {% elsif productDate[1] == '3'%}
+        {% assign productDate = 'mar' %}
+      {% elsif productDate[1] == '4' %}
+        {% assign productDate = 'apr' %}
+      {% elsif productDate[1] == '5' %}
+        {% assign productDate = 'may' %}
+      {% elsif productDate[1] == '6'%}
+        {% assign productDate = 'jun' %}
+      {% elsif productDate[1] == '7'%}
+        {% assign productDate = 'jul' %}
+      {% elsif productDate[1] == '8'%}
+        {% assign productDate = 'aug' %}
+      {% elsif productDate[1] == '9'%}
+        {% assign productDate = 'sep' %}
+      {% elsif productDate[1] == '10'%}
+        {% assign productDate = 'oct' %}
+      {% elsif productDate[1] == '11'%}
+        {% assign productDate = 'nov' %}
+      {% elsif productDate[1] == '12'%}
+        {% assign productDate = 'dec' %}
+      {% endif %}
+      
+      {% if month == productDate %}
+        <div class="col-sm-4 col-md-3">
+          {%include 'product-preorder'%}
+        </div>
+      {%endif%}
+    {%endfor%}
+    </div>
+  </div>
+</div>
+{% endpaginate %}
+
+{% comment %}
+  JavaScript for collection sorting.
+{% endcomment %}
+<script>
+jQuery('.sort-by')
+  .val('{{ collection.sort_by | default: collection.default_sort_by }}')
+  .on('change', function() {
+    Shopify.queryParams.sort_by = jQuery(this).val();
+    location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+  });
+</script>

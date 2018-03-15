@@ -1,0 +1,97 @@
+<div class="container xl-gap cart">
+  <h1 class="heading">Shopping Cart</h1>
+
+  {% if cart.item_count > 0 %}
+  <form action="/cart" method="post"> 
+  <table class="cart-table xl-gap" style="overflow-x:auto;">
+    <thead>
+      <tr>
+        <th class="cart-image">&nbsp;</th>
+        <th class="cart-name">Item</th>
+        <th class="cart-price">Price</th>
+        <th class="cart-quantity">Qty</th>
+        <th class="cart-total">Subtotal</th>
+        <th class="cart-remove">&nbsp;</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+
+    {% for item in cart.items %}    
+    
+      {% comment %}
+      Determining the handle of the collection that was last seen for the 'continue shopping' link.
+      {% endcomment %}
+      
+      {% assign collection_url = item.product.collections.last.url %}
+      {% if collection_url == '/collections/frontpage' or collection_url == blank %}
+        {% assign collection_url = '/collections/all' %}
+      {% endif %}
+      
+      {% if forloop.first %}
+        {% assign continue_shopping_url = collection_url %}
+      {% endif %}
+
+      <tr>
+        <td class="cart-image-cell">
+          <a href="{{ collection_url }}{{ item.url }}">
+            <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.title | escape }}" />
+          </a>
+        </td>
+        <td>
+          <h2 class="cart-name-cell">
+            <a class="link" href="{{ collection_url }}{{ item.url }}">
+            {{ item.title }}
+            </a>
+          </h2>
+        </td>
+        <td class="cart-price-cell">{{ item.price | money }}</td>
+        <td class="cart-quantity-cell">
+          <input type="number" name="updates[]" id="updates_{{ item.id }}" class="quantity" value="{{ item.quantity }}" {%if item.title == 'Gift-Wrap'%}disabled{%endif%}/>
+        </td>
+        <td class="cart-total-item">{{ item.line_price | money }}</td>
+        <td class="cart-remove-cell">
+          <a class="link" href="/cart/change?line={{ forloop.index }}&quantity=0">x</a>
+        </td>
+      </tr>
+    {% endfor %}
+    
+    </tbody>
+    
+  </table>
+  
+  <div id="update">
+    
+    <button class="m-gap dark-blue-button" type="button" onclick="location.href='/products/gift-wrap';"><i class="fa fa-gift" aria-hidden="true"></i> Gift-Wrap</button>
+  	<input class="m-gap blue-button" type="submit" name="update" value="Update Cart" />
+  </div>
+    
+  <div class="row ">
+    <div class = "col-sm-6 xl-gap">
+      <div class="instructions">
+        <h3>Special instructions for seller:</h3>
+        <textarea name="note"></textarea>
+      </div>
+    </div>
+    <div class = "col-sm-6 xl-gap">
+      <div class="checkout-price">
+      	<h1>TOTAL: {{ cart.total_price | money }}</h1>
+      </div>
+      <div class="checkout-button">
+        <input class="red-button" type="submit" name="checkout" value="CHECKOUT" /> 
+	  </div>
+    </div>
+  </div>
+    
+</form>
+
+{% else %}
+
+<div>
+  <h2>It appears that your cart is currently empty!</h2>
+  <h3>You can continue browsing <a class="link-blue" href="/collections/all">here</a>.</h3>
+</div>
+
+{% endif %}
+
+</div>

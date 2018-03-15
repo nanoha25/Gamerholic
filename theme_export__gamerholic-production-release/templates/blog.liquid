@@ -1,0 +1,72 @@
+{% paginate blog.articles by 10 %}
+<div class="container blog-page extra-large-gap">
+  <div class="row">
+    <div class="col-sm-0"></div>
+    <div class="col-xs-0 col-sm-2">
+      <div class="side-heading extra-large-gap">
+        <h2>Recent Posts</h2>
+      </div>
+      {% for article in blogs['news'].articles limit:5 %}
+      <div class="side-item">
+        <a class="link" href="{{article.url}}"><h3>{{article.title}}</h3></a>
+      </div>
+      {% endfor %}
+
+    </div>
+    
+    <div class="col-xs-0 col-sm-10">
+      {% if current_tags[0] %}
+      	<h1 id="heading">{{current_tags[0]}}</h1>
+      {% else %}
+      	<h1 id="heading">GAMERHOLIC BLOG</h1>
+      {% endif %}
+      
+      {% for article in blog.articles limit:5 %}
+      <div class="article-item xl-gap">
+        <p class="article-date secondary">{{ article.published_at | date: "%a, %b %d, %y" }}</p>
+        <a class="link" href="{{article.url}}"><h2 class="article-title">{{article.title}}</h2></a>
+        {% if article.image %}
+          <img class="article-image" src = {{ article | img_url: 'master' }}>
+        {% endif %}
+        <h3 class="article-excerpt">{{article.excerpt}}... <a class="link-blue" href="{{article.url}}"><span class="read-more link-blue">Read More</span></a></h3>
+      	<p class="secondary">
+        {% assign tagNum = article.tags.size | minus: 1%}
+        {% for tag in article.tags %}
+          {% if article.tags[tagNum] == tag%}
+        	{{ tag }}
+          {% else %}
+          	{{ tag }}, 
+          {% endif %}
+        
+        {% endfor %}
+        </p>
+      </div>
+      {% endfor %}
+      
+      {% if paginate.pages > 1 %}
+        <div class="pagination xl-gap">
+        {{ paginate | default_pagination | replace: 'Previous', 'Newer' | replace: 'Next', 'Older' }}
+         </div>
+	  {% endif %}
+	  {% endpaginate %}
+   
+    
+  </div>
+    
+
+  </div>
+  {% assign owlTitle = 'NEW PRODUCTS' %}
+  {% assign owlID = 'owl-new' %}
+  {% assign owlCollection = 'new-products' %}
+  {% assign owlLimit = 15 %}
+  {% include 'owl-slideshow' %}
+  
+
+</div>
+  
+
+
+
+
+
+

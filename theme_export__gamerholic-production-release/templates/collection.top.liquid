@@ -1,0 +1,77 @@
+{% paginate collection.products by 50 %}
+
+
+<div style="border:1px solid #e5e5e5; padding-bottom: 20px;-webkit-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.25);
+-moz-box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.25);
+box-shadow: 0px 0px 13px 1px rgba(0,0,0,0.25);" class="container xl-gap" id="collection">
+
+    
+  
+  	<div id="collection-header">
+      <h1 class="heading" style="margin-bottom: 0">{{collection.title | remove: ' All' | remove: 'Top'}}</h1>
+      {% if collection.image %}
+      	{% if collection.description != "" %}
+          <a href = "{{collection.description}}">
+            <img class="l-gap" id="collection-image" src="{{collection.image.src | img_url: 'master' }}">
+          </a>
+      	{% else %}
+          <img class="l-gap" id="collection-image" src="{{collection.image.src | img_url: 'master' }}">
+      	{% endif %}
+      {% endif %}
+      
+    </div>
+   
+	
+  <div class="row">
+    <div class="hidden-xs col-sm-3 col-md-2">
+      {% if collection.products_count > 0 %}
+      	<div class="side-heading extra-large-gap">
+    		<h2>Categories</h2>
+  		</div>
+      	{% for product in collection.products %}
+        <div class="side-item">
+          <a class="link" href="{{product.description  | remove: '<span>' | remove: '</span>'}}"><h3>{{product.title}}</h3></a>
+        </div>
+      	{% endfor %}
+      {% endif %}
+    </div>  
+    <div class="col-sm-9 col-md-10">
+      {% for product in collection.products %}
+      {% cycle '<div class="row img-row">', '', '' %}
+        <div class="col-sm-4 col-md-4" style="padding-top:27px">
+          <a href="{{product.description | remove: '<span>' | remove: '</span>'}}" class="img-link link">
+            <img src="{{product.images[0].src | product_img_url: 'large'}}" alt="{{ product.title }}">
+            <span style="font-size:1.5em">{{ product.title }}</span>
+          </a>
+        </div>
+      {% cycle '', '', '</div>' %}
+      {% endfor %}
+      </div>
+      {% if collection.products_count == 0 %}
+      	<h3 style="padding-left: 10px">There are no products available in this category. Checkback soon, we're always restocking! Return <a href="/">home.</a></h3>
+      {% endif %}
+    </div>
+  </div>
+    
+  
+</div>
+
+{% if paginate.pages > 1 %}
+<div class="pagination centered">
+  {{ paginate | default_pagination }}
+</div>
+{% endif %}
+
+{% endpaginate %}
+
+{% comment %}
+  JavaScript for collection sorting.
+{% endcomment %}
+<script>
+jQuery('.sort-by')
+  .val('{{ collection.sort_by | default: collection.default_sort_by }}')
+  .on('change', function() {
+    Shopify.queryParams.sort_by = jQuery(this).val();
+    location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+  });
+</script>
