@@ -125,6 +125,13 @@
             {% endif %}
             <!-- End Afterpay Code -->
 
+            <div class="line-seperator"></div>
+
+            {% if product.variants.first.inventory_quantity %}
+              <h3>Stock available: {{product.variants.first.inventory_quantity}} </h3>
+            {% else %}
+              <h3>Stock available: Unlimited!</h3>
+            {% endif %}
 
           <div class="line-seperator"></div>
 
@@ -145,7 +152,7 @@
 
                   {% else %}
                     <option disabled="disabled">
-                      {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                      {{ 'products.product.sold_out' | t }}
                     </option>
                   {% endif %}
                 {% endfor %}
