@@ -165,7 +165,7 @@
                    {% for variant in product.variants %}
 
                          {% for i in (1..variant.inventory_quantity) %}
-                           <option value="{{ i }}">{{ i }}</option>
+                           <option value="{{ i }}"<={{ i }}</option>
                          {% endfor %}
 
                    {% endfor %}
