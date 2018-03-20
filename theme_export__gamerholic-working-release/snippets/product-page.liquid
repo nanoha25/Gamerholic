@@ -163,24 +163,17 @@
                  <label for="quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
                  <select id="quantity" name="quantity">
                    {% for variant in product.variants %}
-                       {% if variant.inventory_quantity < 10 %}
+
                          {% for i in (1..variant.inventory_quantity) %}
                            <option value="{{ i }}">{{ i }}</option>
                          {% endfor %}
-                       {% else %}
-                         {% if variant.inventory_quantity %}
-                           <option value="1">1</option>
-                         {% else %}
-                           {% for i in (1..10) %}
-                             <option value="{{ i }}">{{ i }}</option>
-                           {% endfor %}
-                         {% endif %}
-                       {% endif %}
+
                    {% endfor %}
                   </select>
                {% endif %}
 
               {% if preorder %}
+                <br></br>
               	<input style="margin-left: 7px" type="submit" value="Pre-Order" id="addToCart" />
                 <div class="line-seperator"></div>
                 <h3>We will ship as soon as it's released!</h3>
