@@ -128,7 +128,7 @@
             <div class="line-seperator"></div>
 
             {% if product.variants.first.inventory_quantity %}
-              <h3>Stock available: {{product.variants.first.inventory_quantity}} </h3>
+              <h3>Stock available: {{% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}} </h3>
             {% else %}
               <h3>Stock available: Unlimited!</h3>
             {% endif %}
@@ -165,7 +165,7 @@
                    {% for variant in product.variants %}
 
                          {% for i in (1..variant.inventory_quantity) %}
-                           <option value="{{ i }}"<={{ i }}</option>
+                           <option value="{{ i }}">{{ i }}</option>
                          {% endfor %}
 
                    {% endfor %}
