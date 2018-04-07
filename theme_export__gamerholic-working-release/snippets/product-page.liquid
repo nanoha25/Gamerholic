@@ -157,6 +157,11 @@
                   {% endif %}
                 {% endfor %}
                </select>
+               {% if product.variants.first.title == "Default Title" %}
+                  <style>
+                    .price-tag, #product-select-option-0{display:none !important;}
+                  </style>
+               {% endif %}
 
                {% if settings.product_quantity_enable %}
                  <br></br>
@@ -273,9 +278,3 @@
   })
 });
 </script>
-
-{% if product.variants.first.title == "Default Title" %}
-<style>
-  .price-tag, #product-select-option-0{display:none !important;}
-</style>
-{% endif %}
