@@ -273,3 +273,9 @@
   })
 });
 </script>
+
+{% if product.variants.first.title == "Default Title" %}
+<style>
+  .price-tag, #product-select-option-0{display:none !important;}
+</style>
+{% endif %}
