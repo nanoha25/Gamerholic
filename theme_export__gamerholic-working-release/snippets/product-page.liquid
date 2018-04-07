@@ -149,7 +149,7 @@
                   {% if variant.available %}
 
                     <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-                  {% elsif product.variants.size == 1  %}
+                  {% elsif product.variants.size == 0  %}
                     <option selected="selected">{{ variant.price | money_with_currency }}</option>
                   {% else %}
                     <option disabled="disabled">
