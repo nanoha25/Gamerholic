@@ -152,16 +152,12 @@
 
                   {% else %}
                     <option disabled="disabled">
-                      {{ 'products.product.sold_out' | t }}
+                      {{ variant.title}} - {{ 'products.product.sold_out' | t }}
                     </option>
                   {% endif %}
                 {% endfor %}
                </select>
-               {% if product.variants.first.title == "Default Title" %}
-                  <style>
-                    .price-tag, #product-select-option-0{display:none !important;}
-                  </style>
-               {% endif %}
+
 
                {% if settings.product_quantity_enable %}
                  <br></br>
