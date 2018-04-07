@@ -149,10 +149,8 @@
                   {% if variant.available %}
 
                     <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-                  {% elsif product.variants.first.title == "Default Title" %}
-                     <style>
-                       .price-tag, #product-select-option-0{display:none !important;}
-                     </style>
+                  {% elsif product.variants.size == 1  %}
+                    <option selected="selected">{{ variant.price | money_with_currency }}</option>
                   {% else %}
                     <option disabled="disabled">
                       {{ variant.title}} - {{ 'products.product.sold_out' | t }}
