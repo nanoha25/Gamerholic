@@ -7,10 +7,11 @@
 
   	<div id="collection-header">
       <h1 class="heading" style="margin-bottom: 0">{{collection.title | remove: ' All' | remove: 'Top'}}</h1>
+      {{collection.description}}
       {% if collection.image %}
       	{% if collection.description != "" %}
           <a href = "{{collection.description}}">
-            {{collection.description}}
+
             <img class="l-gap" id="collection-image" src="{{collection.image.src | img_url: 'master' }}">
           </a>
       	{% else %}
