@@ -24,9 +24,11 @@
         </div>
 	  </div>
            
-
-        <p class="text">
-          <span class="title">{{ product.title }}</span>
+        
+        <h2 class="title h2_title" >{{ product.title }}</h2>
+        
+        <p class="text price_height" >
+          
           {% if product.available %}
             {% if sale %}
               <span class="old-price">{{ product.compare_at_price_min | money}}</span>
