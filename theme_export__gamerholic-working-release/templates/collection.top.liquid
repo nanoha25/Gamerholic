@@ -7,10 +7,11 @@
 
   	<div id="collection-header">
       <h1 class="heading" style="margin-bottom: 0">{{collection.title | remove: ' All' | remove: 'Top'}}</h1>
-      <p>collection.description</p>
+      <p>{{collection.description}}</p>
       {% if collection.image %}
       	{% if collection.description != "" %}
           <a href = "{{collection.description}}">
+            {{collection.description}}
             <img class="l-gap" id="collection-image" src="{{collection.image.src | img_url: 'master' }}">
           </a>
       	{% else %}
@@ -47,7 +48,7 @@
       {% endfor %}
       </div>
       {% if collection.products_count == 0 %}
-      	<h3 style="padding-left: 10px">There are no products available in this category. Checkback soon, we're always restocking! Return <a href="/">home.</a></h3>
+      	<h3 style="padding-left: 10px">There are no products available in this category. Check back soon, we're always restocking! Return <a href="/">home.</a></h3>
       {% endif %}
     </div>
   </div>
