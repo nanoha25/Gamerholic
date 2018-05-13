@@ -10,8 +10,8 @@
       {% if collection.image %}
       	{% if collection.description != "" %}
           <a href = "{{collection.description}}">
+            {{collection.description}}
             <img class="l-gap" id="collection-image" src="{{collection.image.src | img_url: 'master' }}">
-            <br>{{collection.description}}
           </a>
       	{% else %}
           <img class="l-gap" id="collection-image" src="{{collection.image.src | img_url: 'master' }}">
