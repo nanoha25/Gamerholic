@@ -14,12 +14,12 @@
 
             <img class="l-gap" id="collection-image" src="{{collection.image.src | img_url: 'master' }}">
           </a>
-        {{collection.description}}
+
       	{% else %}
           <img class="l-gap" id="collection-image" src="{{collection.image.src | img_url: 'master' }}">
       	{% endif %}
       {% endif %}
-
+      {{collection.description}}
     </div>
 
 
