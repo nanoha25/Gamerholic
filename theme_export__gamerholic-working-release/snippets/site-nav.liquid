@@ -19,9 +19,9 @@
 	   <a class="link-white" href="/cart"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>
 
     </li>
-    
+
     <li class="social-link">
-      <a href="https://www.facebook.com/GamerHolic.com.au/?fref=ts" class="link-white">
+      <a href="https://www.facebook.com/GamerholicAU/" class="link-white">
         <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
       </a>
     </li>
@@ -42,8 +42,8 @@
       </a>
     </li>
 	-->
-  
-    
+
+
   </ul>
 </div>
 
@@ -73,10 +73,10 @@
           <a href="/account/login">Log In</a>
           <span class="middle-nav-divider">|</span>
           <a href="/account/register">Sign Up</a>
-        {% endif %} 
+        {% endif %}
       <div class="doubly-wrapper"></div>
 
-    
+
       </div>
     </div>
   </div>
@@ -88,16 +88,16 @@
 <div id="scroller">
   <div class="container" style="padding:0; margin:auto;">
 	<nav id="test" class="main-nav" role="navigation">
-      
+
       <!-- Mobile menu toggle button (hamburger/x icon) -->
       <h2 id="mobile-menu" style="">MENU</h2>
       <input id="main-menu-state" type="checkbox" />
       <label style="float: left; margin-top: 2px" class="main-menu-btn" for="main-menu-state">
-        
+
         <span class="main-menu-btn-icon"></span> Toggle main menu visibility
       </label>
-  
-      
+
+
   	  <ul id="main-menu" class="sm sm-simple">
         {% for link in linklists.main-menu.links %}
         <li><a href="{{ link.url| escape }}">{{ link.title | escape }}</a>
@@ -114,10 +114,10 @@
               {% endfor %}
             </ul>
             {% endif %}
-        </li>     
+        </li>
         {% endfor %}
         </ul>
-        {% endif %} 
+        {% endif %}
         </li>
         {% endfor %}
 	  </ul>
