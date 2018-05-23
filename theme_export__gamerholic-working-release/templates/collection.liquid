@@ -5,7 +5,7 @@
     <div class="col-md-12">
     {% include 'breadcrumbs' %}
     </div>
-  </div> 
+  </div>
   <div class="row">
     <div class="col-sm-6">
       {% if collection.url == '/collections/hot-products' or collection.url == '/collections/new-products' %}
@@ -14,9 +14,9 @@
       </a>
       {% else %}
       <!-- <a href="{{collection.url}}-all" class="link"> -->
-      
+
         <h1 class="heading link">{{collection.title}}</h1>
-      
+
       {% endif %}
       {%if current_tags%}
 		<h3 id="collection-tags">
@@ -26,6 +26,7 @@
           {%endif%}
       	</h3>
       {%endif%}
+      {{collection.description}}
     </div>
     <div class="col-sm-6">
       {% if collection.products_count > 1 %}
@@ -49,15 +50,15 @@
   <div class="row">
     <div class="hidden-xs col-sm-3 col-md-2">
     {% if collection.products_count > 0 %}
-      {% include 'categories2' %} 
+      {% include 'categories2' %}
     {% endif %}
-    </div>  
+    </div>
     <div{% if collection.products_count > 0 %}  class="col-sm-9 col-md-10">  {% endif %}
        <div class="row">
       {% for product in collection.products %}
         {% if product.vendor != 'non-product' %}
           <div class="col-sm-4 col-md-3">
-            
+
           {%include 'product'%}
           </div>
         {% endif %}
@@ -67,7 +68,7 @@
       </div>
     </div>
   </div>
-  
+
 
 </div>
 
