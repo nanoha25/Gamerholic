@@ -1,0 +1,52 @@
+{% capture index %}{{ 'now' | date: '%S' | times: collections[owlCollection].products.size | divided_by: 60 }}{% endcapture %}
+
+<div class="divider extra-large-gap owl-divider">
+    <h2 style="color:white">{{ owlTitle }}</h2>
+    <div class="custom-nav">
+      <a class="btn {{owlID | append: '-next' }} link-white"><h2><i class="fa fa-arrow-right"></i></h2></a>
+      <a class="btn {{owlID | append: '-prev' }} link-white"><h2><i class="fa fa-arrow-left"></i></h2></a>
+    </div>
+  </div>
+  
+  <div id={{ owlID }} class="owl-carousel owl-theme medium-gap">
+    {% for product in collections[owlCollection].products offset:index limit: owlLimit%}
+    {% if owlProduct == product.title %}
+    	{% continue %}
+  	{% endif %}
+    {% assign sale = false %}
+    {% if product.compare_at_price_min > 0 and product.price != product.compare_at_price_min %}
+	  {% assign sale = true %}
+	{% endif %} 
+    
+	<div class="item product">
+      <div class="extras">
+        {% if sale %}
+	  	  <p class="tag sale-tag">Sale</p>
+		{% endif %}
+        
+        {% for collection in product.collections %}
+          {% if collection.title == 'Hot Products' %}
+            <p class="tag">Hot</p>
+          {% endif %}
+          {% if collection.title == 'Newest Products' %}
+            <p class="tag">New</p>
+          {% endif %}
+  		{% endfor %}
+      </div>
+      <a href={{product.url}} class="img-link link">
+        <img src="{{product.images[0].src | product_img_url: 'medium'}}" alt="{{ product.title }}">
+        <p class="text">
+          <span class="title">{{ product.title }}</span>
+          {% if sale %}
+			<span class="old-price">{{ product.compare_at_price_min | money}}</span>
+		  {% endif %}    
+          
+          <span class="price">{{ product.price | money }}</span>
+        </p>
+      </a>
+      <div class="bottom"></div>
+    </div>
+    {% endfor %}
+    
+
+  </div>

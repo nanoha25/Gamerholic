@@ -1,0 +1,15 @@
+<div class="divider xl-gap owl-divider">
+    <a href="collections/{{owlCollection}}" class="link-white"><h2>{{ owlTitle }}</h2></a>
+    <div class="custom-nav">
+      <a class="btn {{owlID | append: '-next' }} link-white"><h2><i class="fa fa-arrow-right"></i></h2></a>
+      <a class="btn {{owlID | append: '-prev' }} link-white"><h2><i class="fa fa-arrow-left"></i></h2></a>
+    </div>
+  </div>
+  
+  <div id={{ owlID }} class="owl-carousel owl-theme medium-gap">
+    {% for product in collections[owlCollection].products limit: owlLimit%}
+      {%include 'product'%}
+    {% endfor %}
+    
+
+  </div>
