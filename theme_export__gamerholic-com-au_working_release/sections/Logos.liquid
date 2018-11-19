@@ -1,0 +1,58 @@
+<div class="container top-pad">
+   {% for block in section.blocks %}
+
+       
+          <div class="col-xs-6 col-sm-6 col-md-3 padds_in1 image_around">
+             <a href="{{block.settings.logoslink5}}">
+            <img src="{{block.settings.logos | img_url:'master'}}" style="width:100%">
+                </a>
+          </div>
+       
+        {% endfor %}
+ 
+
+
+<div class="clear"></div>
+</div>
+
+{% schema %}
+  {
+    "name": "Logos",
+"class": "index-section",
+     "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logos",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "logoslink5",
+          "label": "Link"
+          
+        }
+      ]
+    }
+  ],
+"presets": [
+    {
+      "name": "Logos",
+      "category": "Image"
+      }
+  ]
+  }
+{% endschema %}
+
+<style>
+  .padds_in1 {
+    padding: 20px;
+}
+
+.padds_in1 img {
+    border: 2px solid #000;
+}
+</style>

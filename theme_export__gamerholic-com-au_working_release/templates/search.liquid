@@ -1,0 +1,81 @@
+<div class="container xxl-gap" id="search">
+  <form action="/search" method="get" class="search-form" role="search">
+    <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
+    <input type="submit" id="search-submit" value="Search" class="red-button" />
+  </form>
+
+  {% comment %}
+  search.performed is false when accessing the /search page without a 'q' parameter set
+  in the URL. A shop-owner can link to the /search page from one of his link lists.
+  It is important to show a search form on that page if search.performed is false.
+  {% endcomment %}
+
+  {% if search.performed %}
+
+    {% paginate search.results by 32 %}
+
+    {% comment %}
+    Common pitfall to avoid: search.results should never be accessed before the opening
+    paginate tag. Move the opening and closing paginate tags to the very top and bottom of your
+    search.liquid template if you need to.
+    If you fail to do the above, the pagination of search results will be broken.
+    search.results_count is fine to access in or out of the paginate block.
+    {% endcomment %}
+
+    {% if search.results_count == 0 %}
+  <p style="font-size: 1.17em; margin-top: 40px; text-align:center; display:block;">Your search for <strong>"{{ search.terms }}"</strong> did not yield any results.</p>
+    {% else %}
+
+    <ul>
+      {% for item in search.results %}
+        {% if item.vendor != 'non-product' %}
+          {% cycle 'row-loop': '<div class="row results">', '', '', '', '', ''%}
+            <div class="col-sm-6 col-md-2">
+              <div class="item product">
+                <div class="square">
+                  <div class="content {%if item.available %} avail {%else%}no-abil{%endif%}">
+                    <a href="{{ item.url }}">
+                      {{ item.featured_image | product_img_url: 'original' | img_tag }}
+                    </a>
+                  </div>
+                </div>
+                <p class="details">
+                  <h4 class="text">{{ item.title | highlight: search.terms | link_to: item.url}}</h4>
+                </p>
+              </div>
+      <div class="available">
+  {%if item.available %}
+ <div class="addtocart1">
+          <form method="post" action="/cart/add">
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+  <input type="submit" value="Add to cart" class="btn" />
+</form> 
+          </div>
+  {%else%}
+  <div class="badge badge--sold-out"><span class="badge-label">Sold Out</span></div>
+  {%endif%}
+  </div>
+            </div>
+
+          {% cycle 'row-loop2': '', '', '', '', '', '</div> <hr class="divider" />' %}
+
+
+          {% cycle 'clear-product-loop': '', '', '', '', '', '<div style="clear:both;"></div>' %}
+
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    {% endif %}
+
+    {% if paginate.pages > 1 %}
+  	<div class="pagination xl-gap">
+      {{ paginate | default_pagination }}
+  	</div>
+    {% endif %}
+
+    {% endpaginate %}
+
+  {% endif %}
+
+</div>

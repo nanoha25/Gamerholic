@@ -1,0 +1,289 @@
+{% assign add_to_cart = 'Add to cart' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign unavailable = 'Unavailable' %}
+
+<div class="container">
+  
+  <div class="product-page">
+    <div class="row">
+      <div class="col-md-12">
+      <br/>{% include 'breadcrumbs' %}
+      </div>
+    </div> 
+    <h1 class="title extra-large-gap">{{product.title}}</h1>
+    
+    <div class="row extra-large-gap #main">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5">
+        {% if product.images.size == 0 %}
+            <img id="main-image" src="{{ '' | img_url: '1024x1024' }}" alt=""/>
+        {% else %}
+		  {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+            <img id="main-image" src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ product.title | escape }}" />
+		{% endif %}
+      </div>
+      <div class="col-sm-5">
+        <div class="order">
+          {% assign sale = false %}
+          {% if product.compare_at_price_min > 0 and product.price != product.compare_at_price_min %}
+            {% assign sale = true %}
+          {% endif %} 
+         
+          
+          {% if sale %}
+			<h2 class="old-price">{{ product.compare_at_price_min | money}}</h2>
+		  {% endif %}    
+          <h2 class="price">{{ product.price | money }}</h2>
+          
+          
+          <!-- Begin Afterpay Code v2.0.2 -->
+            {% assign afterpay_minimum_value_in_cents = 1 %}
+            {% assign afterpay_maximum_value_in_cents = 100000 %}
+            {% assign afterpay_count_eligible_variants = 0 %}
+            {% if shop.currency == 'AUD' %}
+              {% for afterpay_variant in product.variants %}
+                {% if afterpay_variant.available and afterpay_variant.price >= afterpay_minimum_value_in_cents and afterpay_variant.price < afterpay_maximum_value_in_cents %}
+                  {% assign afterpay_count_eligible_variants = afterpay_count_eligible_variants | plus: 1 %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {% if afterpay_count_eligible_variants > 0 %}
+              <p class="afterpay-paragraph" style="display:{% if product.selected_or_first_available_variant.available and product.selected_or_first_available_variant.price >= afterpay_minimum_value_in_cents and product.selected_or_first_available_variant.price < afterpay_maximum_value_in_cents %}block{% else %}none{% endif %};" data-product-id="{{ product.id }}">
+                or make 4 interest-free payments of
+                <span class="afterpay-instalments">{{ product.selected_or_first_available_variant.price | divided_by: 4.0 | round | money_with_currency }}</span> fortnightly with 
+                <a style="display:inline-block; margin-bottom: 10px;" target="_blank" href="https://www.afterpay.com.au/terms">
+                  <img style="vertical-align:bottom" width="100" alt="Afterpay" src="https://www.afterpay.com.au/wp-content/themes/afterpay/assets/img/logo_scroll.png" /> 
+                  <span style="font-size:12px"> <u>More info</u> </span>  
+                </a>
+              </p>
+              {% if product.price_varies or afterpay_count_eligible_variants < product.variants.size %}
+                <script type="text/javascript">
+                  if (typeof Afterpay === 'undefined') {
+                    var Afterpay = {products:[]};
+                    Afterpay.loadScript = function(url, callback) {
+                      var script = document.createElement('script');
+                      script.type = 'text/javascript';
+                      if (script.readyState) { // I.E.
+                        script.onreadystatechange = function() {
+                          if (script.readyState == 'loaded' || script.readyState == 'complete') {
+                            script.onreadystatechange = null;
+                            callback();
+                          }
+                        };
+                      } else { // Others
+                        script.onload = function() {
+                          callback();
+                        };
+                      }
+                      script.src = url;
+                      document.getElementsByTagName('head')[0].appendChild(script);
+                    };
+                    Afterpay.init = function($) {
+                      $('body').on('change', $('form[action^="/cart/add"]'), function(event) {
+                        var $form = $(event.target).closest('form');
+                        var $afterpay_paragraph = null;
+                        var should_show_instalments = false;
+                        var selected_variant_id = parseInt($('input[name=id]:checked, select[name=id], input[name=id], hidden[name=id]', $form).val(), 10);
+                        if (isNaN(selected_variant_id)) {
+                          var $variant_options = $form.find('input[name=id][value], select[name=id] option[value], hidden[name=id][value]').filter(function(index, element) {
+                            return $(element).attr('value').match(/^[1-9][0-9]*$/);
+                          });
+                          $variant_options.each(function(index, element) {
+                            $.each(Afterpay.products, function(product_index, product) {
+                              $.each(product.variants, function(variant_index, variant) {
+                                if (variant.id == $(element).val()) {
+                                  $afterpay_paragraph = $('.afterpay-paragraph[data-product-id=' + product.id + ']');
+                                  return false;
+                                }
+                              });
+                              if ($afterpay_paragraph !== null) {
+                                return false;
+                              }
+                            });
+                            if ($afterpay_paragraph !== null) {
+                              return false;
+                            }
+                          });
+                        } else if (selected_variant_id > 0) {
+                          $.each(Afterpay.products, function(product_index, product) {
+                            $.each(product.variants, function(variant_index, variant) {
+                              if (variant.id == selected_variant_id) {
+                                $afterpay_paragraph = $('.afterpay-paragraph[data-product-id=' + product.id + ']');
+                                if (variant.available && variant.price >= {{ afterpay_minimum_value_in_cents }} && variant.price < {{ afterpay_maximum_value_in_cents }}) {
+                                  should_show_instalments = true;
+                                  $afterpay_paragraph.find('.afterpay-instalments').text('$' + (Math.round(variant.price / 4) / 100).toFixed(2) + ' AUD');
+                                }
+                              }
+                            });
+                          });
+                        }
+                        if ($afterpay_paragraph !== null) {
+                          if (should_show_instalments) {
+                            $afterpay_paragraph.show();
+                          } else {
+                            $afterpay_paragraph.hide();
+                          }
+                        }
+                      });
+                    };
+                    if (typeof jQuery === 'undefined' || parseFloat(jQuery.fn.jquery) < 1.7) {
+                      Afterpay.loadScript('https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', function() {
+                        var jQuery_1_12_4 = jQuery.noConflict(true);
+                        Afterpay.init(jQuery_1_12_4);
+                      });
+                    } else {
+                      Afterpay.init(jQuery);
+                    }
+                  }
+                  Afterpay.products.push({{ product | json }});
+                </script>
+              {% endif %}
+            {% endif %}
+            <!-- End Afterpay Code -->
+          
+          <!-- Zip WIDGET -->
+{%include 'zip-widget'%}
+<style>
+  #shopify-zip-prod-widget > iframe { 
+    height: 60px!important;
+    max-width: min-content!important;
+    position: relative !important;
+    right: 20px !important;
+  }
+</style>
+<span style="cursor:pointer" id="shopify-zip-prod-widget" data-zm-asset="productwidget" data-zm-widget="popup" data-zm-popup-asset="termsdialog"></span>
+<!-- end Zip WIDGET -->
+          <div class="line-seperator"></div>
+          
+          {% if product.variants.first.inventory_quantity %}
+            <h3>Stock available: {{product.variants.first.inventory_quantity}} </h3>
+          {% else %}
+            <h3>Stock available: Unlimited!</h3>
+          {% endif %}
+          <div class="line-seperator"></div>
+          
+ 		  {% if preorder %}
+            <h3>Date released: {{product.variants.first.barcode}} </h3>
+            <div class="line-seperator"></div>
+          {% endif %}
+          
+          {% if product.available %}
+            <form method="post" action="/cart/add">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+              <input type="hidden" name="return_to" value="back" />
+              <select id="quantity" name="quantity">
+              {% if product.variants.first.inventory_quantity < 10 %}  
+                {% for i in (1..product.variants.first.inventory_quantity) %}
+                  <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+              {% else %}
+                {% if product.variants.first.inventory_quantity %}
+                  <option value="1">1</option>
+                {% else %}
+                  {% for i in (1..10) %}
+                    <option value="{{ i }}">{{ i }}</option>
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+               </select>
+              {% if preorder %}
+              	<input style="margin-left: 7px" type="submit" value="Pre-Order" id="addToCart" />
+                <div class="line-seperator"></div>
+                <h3>We will ship as soon as it's released!</h3>
+              {% else %}
+              	<input style="margin-left: 7px" type="submit" value="Add To Cart" id="addToCart" />
+              {% endif %}
+               
+            </form>
+          {% else %}
+			<input style="margin-left: 7px" type="submit" value="Out of Stock" id="outOfStock" />
+			<div class="line-seperator"></div>
+            <h3>Check back soon! We are constantly restocking.</h3>
+          {% endif %}
+          
+          
+         
+          
+       </div>
+        
+      </div>
+    </div>
+    
+    <div class="row extra-large-gap">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <ul class="tab">
+          <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Description')" id="defaultOpen">Description</a></li>
+          <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Reviews')">Reviews</a></li>
+            
+          
+        </ul>
+        <div id="Description" class="tabcontent">
+          {{ product.description }}
+        </div>
+        <div id="Reviews" class="tabcontent">
+  			<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+        </div>
+
+        <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+        </script>
+      </div>            
+    </div>
+    
+    
+    {% assign owlCollection = 'hot-products' %}
+    {% for collection in product.collections %}
+      {% if collection.title != 'Hot Products' and collection.title != 'Newest Products' %}
+   		{% assign owlCollection = collection.handle %}
+      {% endif %}
+    {% endfor %}
+    
+    {% assign owlTitle = 'RELATED PRODUCTS' %}
+    {% assign owlID = 'owl-related' %}
+    {% assign owlLimit = 15 %}
+    {% assign owlProduct = product.title %}
+    {% include 'owl-slideshow-related' %}
+    
+  </div>
+  
+</div>
+
+<script>
+  $(document).ready(function() {
+ 
+  var owl = $("#owl-related");
+ 
+  owl.owlCarousel({
+    slideSpeed : 300,
+    paginationSpeed : 400,
+    autoPlay: 3000,
+    stopOnHover: true,
+    pagination: false
+  });
+ 
+  // Custom Navigation Events
+  $(".owl-related-next").click(function(){
+    owl.trigger('owl.next');
+  })
+  $(".owl-related-prev").click(function(){
+    owl.trigger('owl.prev');
+  })
+});
+</script>
+ 

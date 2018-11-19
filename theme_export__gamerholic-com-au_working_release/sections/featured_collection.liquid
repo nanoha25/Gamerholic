@@ -1,0 +1,66 @@
+<div class="container">
+{% if section.settings.title != blank %}
+    <div class="section-header text-center">
+      <h2>{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  {%- assign collection = collections[section.settings.collection] -%}
+  <div class="owl-carousel owl-theme" id="Featured_Collection">
+ {% for product in collection.products %}
+    <div class="col-sm-s">
+    <a href="{{ product.url }}" class="img-link link">
+      <img src="{{product.images[0].src | product_img_url: 'large'}}" alt="{{ product.title }}">
+      <span class="tile_pro">{{ product.title }}</span>
+    </a>
+    <div class="price_Section">  
+     Price: 
+ {% if product.price_varies %} 
+    between {{ product.price_min | money }} to {{ product.price_max | money }} 
+ {% else %}
+   {{ product.price_min | money }}
+ {% endif %}
+      </div>
+       <div class="addtocart">
+      <form method="post" action="/cart/add">
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+  <input type="submit" value="Add to cart" class="btn" />
+</form> 
+    </div>
+  </div>
+   
+{%endfor%}
+</div>
+</div>
+{% schema %}
+{
+  "name": "featured Collection",
+  "class": "index-section featured-featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "heading",
+      "default": "Featured Collection"
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collezione"
+      }
+   
+  ],
+  "presets": [
+    {
+      "name": "Feature Collection",
+      "category": "Image"
+      }
+  ]
+}
+{% endschema %}
+<style>
+  a.img-link.link img {
+        width: 100%;
+    padding: 10px;
+}
+</style>

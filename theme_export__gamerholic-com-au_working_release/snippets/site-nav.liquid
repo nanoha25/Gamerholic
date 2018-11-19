@@ -1,0 +1,127 @@
+<div class="top-nav">
+  <ul>
+    <li>
+      <a class="link-white" href="/collections/pre-order">PRE-ORDER</a>
+    </li>
+    <li>
+      <a class="link-white" href="/pages/sell">SELL</a>
+    </li>
+    <li>
+      <a class="link-white" href="/blogs/news">BLOG</a>
+    </li>
+    <li>
+      <a class="link-white" href="/collections/sale">SALE</a>
+    </li>
+    <li>
+      <a class="link-white" href="/collections/new-products">NEW</a>
+    </li>
+    <li id="cart-link">
+	   <a class="link-white" href="/cart"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>
+
+    </li>
+
+    <li class="social-link">
+      <a href="https://www.facebook.com/GamerholicAU/" class="link-white">
+        <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-link">
+      <a href="" class="link-white">
+        <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-link">
+      <a href="/pages/faq" class="link-white">
+        BASE SHIPPING $8
+      </a>
+    </li>
+    <!--
+    <li class="social-link">
+      <a href="" class="link-white">
+        <i class="fa fa-snapchat fa-lg" aria-hidden="true"></i>
+      </a>
+    </li>
+	-->
+
+
+  </ul>
+</div>
+
+<div class = "container">
+  <div class="middle-nav">
+    <div class ="row">
+      <div class="col-sm-5 logo">
+        <div class="logo">
+          <a href="/">
+        	<img src="{{ 'logo.png' | asset_url }}" alt="My Logo">
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-3">
+
+		<form action="/search">
+            <input type="search" id="search" placeholder="Search..." name="q" />
+            <button class="icon"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <div class="col-sm-4">
+        {% if customer  %}
+    	  <a href="/account">Account</a>
+          <span class="middle-nav-divider">|</span>
+          {{ 'Log out' | customer_logout_link }}
+  		{% else %}
+          <a href="/account/login">Log In</a>
+          <span class="middle-nav-divider">|</span>
+          <a href="/account/register">Sign Up</a>
+        {% endif %}
+      <div class="doubly-wrapper"></div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="scroller-anchor" style="height:1px"></div>
+<div id="scroller-gap"></div>
+<div id="scroller">
+  <div class="container" style="padding:0; margin:auto;">
+	<nav id="test" class="main-nav" role="navigation">
+
+      <!-- Mobile menu toggle button (hamburger/x icon) -->
+      <h2 id="mobile-menu" style="">MENU</h2>
+      <input id="main-menu-state" type="checkbox" />
+      <label style="float: left; margin-top: 2px" class="main-menu-btn" for="main-menu-state">
+
+        <span class="main-menu-btn-icon"></span> Toggle main menu visibility
+      </label>
+
+
+  	  <ul id="main-menu" class="sm sm-simple">
+        {% for link in linklists.main-menu.links %}
+        <li><a href="{{ link.url| escape }}">{{ link.title | escape }}</a>
+         {% assign handle = link.title | handle %}
+        {% if linklists[handle].links.size > 0 %}
+        <ul>
+        {% for sublink in linklists[handle].links %}
+        <li><a href="{{ sublink.url }}">{{ sublink.title | escape }}</a>
+            {% assign subhandle = sublink.title | handle %}
+            {% if linklists[subhandle].links.size > 0 %}
+            <ul>
+              {% for subsublink in linklists[subhandle].links %}
+                  <li><a href="{{ subsublink.url }}">{{ subsublink.title | escape }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        </li>
+        {% endfor %}
+	  </ul>
+
+	</nav>
+  </div>
+</div>

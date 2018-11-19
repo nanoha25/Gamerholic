@@ -1,0 +1,49 @@
+<div class="container">
+<div style="padding:20px;">
+
+
+<div class="row">
+{%if section.settings.headings != blank %}
+ <h1 class="center"> {{section.settings.headings}}</h1>
+  {%endif%}
+  
+ <div class="col-xs-12 col-sm-6 col-md-6">
+{%if section.settings.frst != blank %}{{section.settings.frst}}{%endif%}
+</div>
+ <div class="col-xs-12 col-sm-6 col-md-6">
+{%if section.settings.Second != blank %}{{section.settings.Second}}{%endif%}
+ </div>
+<div class="clear"></div>
+ </div>
+</div>
+</div>
+  {% schema %}
+  {
+    "name": "Feature content",
+"class": "index-section Feature-content",
+"settings": [
+  {
+      "type":"text",
+		"id":"headings",
+	"label":"heading"
+    },
+    {
+      "type":"html",
+		"id":"frst",
+	"label":"First Paragraph"
+    },
+  {
+      "type":"html",
+		"id":"Second",
+	"label":"Second Paragraph"
+    }
+	
+  ],
+"presets": [
+    {
+      "name": "Feature content",
+      "category": "Image"
+      }
+  ]
+  }
+{% endschema %}

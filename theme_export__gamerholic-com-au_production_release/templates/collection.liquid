@@ -1,0 +1,94 @@
+{% paginate collection.products by 50 %}
+
+<div class="container xl-gap" id="collection">
+  <div class="row">
+    <div class="col-md-12">
+    {% include 'breadcrumbs' %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      {% if collection.url == '/collections/hot-products' or collection.url == '/collections/new-products' %}
+      <a href="{{collection.url}}" class="link">
+        <h1 class="heading link">{{collection.title}}</h1>
+      </a>
+      {% else %}
+      <!-- <a href="{{collection.url}}-all" class="link"> -->
+
+        <h1 class="heading link">{{collection.title}}</h1>
+
+      {% endif %}
+      {%if current_tags%}
+		<h3 id="collection-tags">
+          {{current_tags[0]}}
+          {%if current_tags[1]%}
+          	- {{current_tags[1]}}
+          {%endif%}
+      	</h3>
+      {%endif%}
+
+    </div>
+    <div class="col-sm-6">
+      {% if collection.products_count > 1 %}
+      <div id="option-box">
+      <h3>SORT BY</h3>
+      <select class="sort-by">
+        <option value="manual">Featured</option>
+        <option value="price-ascending">Price: Low to High </option>
+        <option value="price-descending">Price: Hight to Low</option>
+        <option value="title-ascending">A-Z</option>
+        <option value="title-descending">Z-A</option>
+        <option value="created-ascending">Oldest to Newest</option>
+        <option value="created-descending">Newest to Oldest</option>
+        <option value="best-selling">Best Selling</option>
+       </select>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    {{collection.description}}
+    <div class="hidden-xs col-sm-3 col-md-2">
+    {% if collection.products_count > 0 %}
+      {% include 'categories2' %}
+    {% endif %}
+    </div>
+    <div{% if collection.products_count > 0 %}  class="col-sm-9 col-md-10">  {% endif %}
+       <div class="row">
+      {% for product in collection.products %}
+        {% if product.vendor != 'non-product' %}
+          <div class="col-sm-4 col-md-3">
+
+          {%include 'product'%}
+          </div>
+        {% endif %}
+      {% else %}
+         <h3>There are no products available in this category. Checkback soon, we're always restocking! Return <a href="/">home.</a></h3>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+{% if paginate.pages > 1 %}
+<div class="pagination centered">
+  {{ paginate | default_pagination }}
+</div>
+{% endif %}
+
+{% endpaginate %}
+
+{% comment %}
+  JavaScript for collection sorting.
+{% endcomment %}
+<script>
+jQuery('.sort-by')
+  .val('{{ collection.sort_by | default: collection.default_sort_by }}')
+  .on('change', function() {
+    Shopify.queryParams.sort_by = jQuery(this).val();
+    location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+  });
+</script>

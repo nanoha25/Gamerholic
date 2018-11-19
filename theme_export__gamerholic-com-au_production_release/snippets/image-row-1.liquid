@@ -1,0 +1,10 @@
+<div class="row img-row xl-gap">
+  {% for product in collections['Image-Row-1'].products limit:4 %}
+  <div class="col-sm-3">
+    <a href="{{ product.description }}" class="img-link link">
+      <img src="{{product.images[0].src | product_img_url: 'large'}}" alt="{{ product.title }}">
+      <span>{{ product.title }}</span>
+    </a>
+  </div>
+  {% endfor %}
+</div>

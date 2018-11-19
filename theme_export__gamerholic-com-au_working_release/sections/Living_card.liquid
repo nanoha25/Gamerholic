@@ -1,0 +1,116 @@
+<div class="container top-pad">
+<div class="hometabletcg" style="margin:15px 0">
+	<div class="col-xs-12 no-gutter main_div" style="background:#6666ab">
+
+		<div class="col-md-12 col-lg-4 no-gutter">
+          <h2 class="center heading_font" style="text-align:center;color:white">{{section.settings.textid3}}</h2>
+			<div class="col-xs-12 center no-gutter" style="text-align:center;text-decoration: underline;font-weight: bold;padding:0 0 13px 0">
+				<a style="color: #ffcc33 !important" href="{{section.settings.urls3}}">{{section.settings.SubHeading3}}</a>
+			</div>
+
+          <div class="homelist col-xs-12">
+          
+            {% for link in linklists[section.settings.Menus3].links %}
+            <a href="{{ link.url }}">
+              <div class="col-xs-6 col-sm-4 col-md-2 col-lg-6 no-gutter homes">
+              {{ link.title }}
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+                                <div class="clear"></div>
+		</div>
+		
+      <div class="col-md-12 col-lg-8 no-gutter main_div">
+        {% for block in section.blocks %}
+
+       
+          <div class="col-xs-4 col-sm-3 no-gutter hometable">
+            <a href="{{block.settings.link3}}">
+            <img src="{{block.settings.cartimage3 | img_url:'master'}}">
+              </a>
+          </div>
+        
+        {% endfor %}
+
+
+
+        <div class="clear"></div>
+      </div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Classic Board Games",
+"class": "index-section section-4",
+"settings": [
+    {
+      "type":"text",
+		"id":"textid3",
+	"label":"Heading"
+    },
+	{
+      "type":"text",
+		"id":"SubHeading3",
+	"label":"SubHeading"
+    },
+{
+      "type":"url",
+		"id":"urls3",
+	"label":"SubHeading urls"
+    },
+
+{
+   "type":      "link_list",
+   "id":        "Menus3",
+   "label":     "Menus"
+}
+  ],
+     "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "cartimage3",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link3",
+          "label": "Link"
+          
+        }
+      ]
+    }
+  ],
+"presets": [
+    {
+      "name": "Living_card",
+      "category": "Image"
+      }
+  ]
+  }
+{% endschema %}
+<style>
+/*   .homelist {
+    text-align: center;
+} */
+
+/* .homelink {
+    padding: 12px;
+    font-size: 20px;
+    color: #fff;
+} */
+  .section-4 .hometable img{
+  width:100%;
+  }
+  .section-4 .hometable {
+  padding-right: 0px;
+    padding-left: 0px;
+}
+</style>

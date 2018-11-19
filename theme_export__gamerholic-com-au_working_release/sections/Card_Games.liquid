@@ -1,0 +1,123 @@
+<div class="container">
+<div class="hometabletcg" style="">
+	<div class="col-xs-12 no-gutter main_div" style="background:#292929;">
+
+      <div class="col-md-12 col-lg-4 no-gutter space_frr ">
+        <h2 class="center heading_font" style="text-align:center;color:white">
+          {{section.settings.textid5}}</h2>
+        <div class="col-xs-12 center no-gutter" style="text-align:center;text-decoration: underline;font-weight: bold;padding:0 0 13px 0">
+          <a style="color: #ffcc33 !important" href="{{section.settings.urls5}}">
+            {{section.settings.SubHeading5}}
+          </a>
+        </div>
+
+        <div class="homelist col-xs-12">
+
+          {% for link in linklists[section.settings.Menus5].links %}
+          <a href="{{ link.url }}">
+            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-6 no-gutter homes">
+              {{ link.title }}
+            </div>
+          </a>
+          {% endfor %}
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+		
+      <div class="col-md-12 col-lg-8 no-gutter main_div">
+        {% for block in section.blocks %}
+
+       
+          <div class="col-xs-4 col-sm-3 no-gutter hometable">
+             <a href="{{block.settings.link5}}">
+            <img src="{{block.settings.cartimage5 | img_url:'master'}}">
+               </a>
+          </div>
+        
+        {% endfor %}
+
+
+
+        <div class="clear"></div>
+      </div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Living Card Games",
+"class": "index-section section-6",
+"settings": [
+    {
+      "type":"text",
+		"id":"textid5",
+	"label":"Heading"
+    },
+	{
+      "type":"text",
+		"id":"SubHeading5",
+	"label":"SubHeading"
+    },
+{
+      "type":"url",
+		"id":"urls5",
+	"label":"SubHeading urls"
+    },
+
+{
+   "type":      "link_list",
+   "id":        "Menus5",
+   "label":     "Menus"
+}
+  ],
+     "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "cartimage5",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link5",
+          "label": "Link"
+          
+        }
+      ]
+    }
+  ],
+"presets": [
+    {
+      "name": "Card_Games",
+      "category": "Image"
+      }
+  ]
+  }
+{% endschema %}
+<style>
+/*   .homelist {
+    text-align: center;
+} */
+
+/* .homelink {
+    padding: 12px;
+    font-size: 20px;
+    color: #fff;
+} */
+  .section-6 .hometable img{
+  width:100%;
+  }
+  .section-6 .hometable {
+  padding-right: 0px;
+    padding-left: 0px;
+}
+  .section-6 .hometable img {
+    height: 189px;
+}
+</style>

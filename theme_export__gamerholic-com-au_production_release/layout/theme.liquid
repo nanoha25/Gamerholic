@@ -1,0 +1,159 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js {%if template != 'index'%}html-fix{%endif%}"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
+
+  <title>
+  {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}" />
+  {% endif %}
+  <meta name="google-site-verification" content="VNgbA-epovruKpFlvS5_pF9sJTgj5z_-XoiyUv5NnKI" />
+
+  <link rel="canonical" href="{{ canonical_url }}" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {{ content_for_header }}
+
+  {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }}
+  {{ 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' | stylesheet_tag }}
+
+  {{ '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic' | stylesheet_tag }}
+
+  <!--[if lt IE 9]>
+  {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
+  <![endif]-->
+
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% if template contains 'customers' %}
+  {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+
+  <!-- Additional Shopify helpers that will likely be added to the global shopify_common.js some day soon. -->
+  {{ 'shopify_common.js'  | asset_url | script_tag }}
+
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+  <script>jQuery('html').removeClass('no-js').addClass('js');</script>
+
+
+
+
+  <!-- Jack's Header -->
+
+  {{ 'sm-core-css.css' | asset_url | stylesheet_tag }}
+  {{ 'sm-simple.css' | asset_url | stylesheet_tag }}
+  {{ 'jquery.smartmenus.js' | asset_url | script_tag  }}
+  {{ 'smartmenu.init.js' | asset_url | script_tag  }}
+
+  {{ 'owl.carousel.css' | asset_url | stylesheet_tag }}
+  {{ 'owl.theme.css' | asset_url | stylesheet_tag }}
+  {{ 'owl.transitions.css' | asset_url | stylesheet_tag }}
+  {{ 'owl.carousel.min.js' | asset_url | script_tag  }}
+  {{ 'owl.config.js' | asset_url | script_tag  }}
+
+
+  {{ 'bootstrap.css' | asset_url | stylesheet_tag }}
+  {{ 'gamerholic.css' | asset_url | stylesheet_tag }}
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+      #mc_embed_signup form{
+        padding: 0;
+        color: black;
+      }
+      #mce-EMAIL {
+        height: 48px;
+        font-size: 16px;
+        background-color: #1a1a1a;
+        padding: 0px 15px 0px 15px !important;
+        border-radius: 0px !important;
+        color: white;
+
+        border: none !important;
+      }
+    .mce-inline-error {
+      padding-top: 5px !important;
+    }
+    #mc-embedded-subscribe{
+      margin: 0;
+      border-radius: 0px !important;
+      border: none !important;
+      font-size: 16px;
+      letter-spacing: 2.4px;
+    }
+
+    #mc-embedded-subscribe:hover {
+  background-color: #CF130E;
+  -webkit-transition: background-color 0.5s; /* Safari */
+  transition: background-color 0.5s;
+    }
+
+    #mce-error-response,#mce-success-response {
+      padding-top: 7px !important;
+      color: #CF130E !important;
+    }
+
+    .mce_inline_error {
+      padding-top: 10px !important;
+    }
+
+    .h2_title{
+    	height: 35.5px !important;
+      font-size: 12px !important;
+      font-weight: initial !important;
+      margin: 2px 10px 0px 10px !important;
+    }
+    .price_height{
+    	height: 29.5px !important;
+    }
+
+  </style>
+
+
+</head>
+
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %} {%if template != 'index'%}body-fix{%endif%}">
+
+
+
+
+      {% include 'site-nav' %}
+
+
+
+      {{ content_for_layout }}
+
+      {% include 'footer' %}
+
+
+
+
+
+
+
+
+
+
+<!-- BEEKETINGSCRIPT CODE START -->{% include 'bk-tracking' %}<!-- BEEKETINGSCRIPT CODE END -->
+
+{% include 'swymSnippet' %}
+
+  <script async src="https://cdn.enlistly.com/track/gamerholic.com.au.enlistly.js"></script>
+
+ {% include 'smile-initializer' %}
+
+ {% include 'smile-ui-launcher' %}
+
+{% include 'elspl_theme' %}
+</body>
+</html>

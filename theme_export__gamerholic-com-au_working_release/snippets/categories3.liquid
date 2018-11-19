@@ -1,0 +1,56 @@
+{%assign collectionName = collection.title | remove: ' &' | remove: ' All'| replace: ' ', '-'| downcase %}
+
+
+
+{% if collectionName == "Card-Games" %}
+  <div class="side-heading extra-large-gap">
+    <h2>Pokemon</h2>
+  </div>
+  {% for tag in collections['Pokemon'].tags %}
+  <div class="side-item">
+    <a class="link" href="/collections/pokemon/{{tag | replace: ' ', '-' }}"><h3>{{tag}}</h3></a>
+  </div>
+  {% endfor %}
+  <div class="side-heading extra-large-gap">
+    <h2>Yugioh</h2>
+  </div>
+  {% for tag in collections['Yugioh'].tags %}
+  <div class="side-item">
+    <a class="link" href="/collections/yugioh/{{tag | replace: ' ', '-' }}"><h3>{{tag}}</h3></a>
+  </div>
+  {% endfor %}
+  <div class="side-heading extra-large-gap">
+    <h2>MTG</h2>
+  </div>
+  {% for tag in collections['MTG'].tags %}
+  <div class="side-item">
+    <a class="link" href="/collections/mtg/{{tag | replace: ' ', '-' }}"><h3>{{tag}}</h3></a>
+  </div>
+  {% endfor %}
+{% else %}
+  {% for tag in collections['Playstation'].tags %}
+  <div class="side-heading extra-large-gap">
+    <h2>Playstation</h2>
+  </div>
+  <div class="side-item">
+    <a class="link" href="/collections/playstation/{{tag | replace: ' ', '-' }}"><h3>{{tag}}</h3></a>
+  </div>
+  {% endfor %}
+  <div class="side-heading extra-large-gap">
+    <h2>Nintendo DS</h2>
+  </div>
+  {% for tag in collections['Nintendo-DS'].tags %}
+  <div class="side-item">
+    <a class="link" href="/collections/nintendo-ds/{{tag | replace: ' ', '-' }}"><h3>{{tag}}</h3></a>
+  </div>
+  {% endfor %}
+  <div class="side-heading extra-large-gap">
+    <h2>XBOX</h2>
+  </div>
+  {% for tag in collections['XBOX'].tags %}
+  <div class="side-item">
+    <a class="link" href="/collections/xbox/{{tag | replace: ' ', '-' }}"><h3>{{tag}}</h3></a>
+  </div>
+  {% endfor %}
+
+{% endif %}

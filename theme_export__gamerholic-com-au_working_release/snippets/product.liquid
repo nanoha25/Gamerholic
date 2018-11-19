@@ -1,0 +1,46 @@
+{% assign sale = false %}
+    {% if product.compare_at_price_min > 0 and product.price != product.compare_at_price_min %}
+	  {% assign sale = true %}
+	{% endif %} 
+    
+	<div class="item product">
+      {% if product.available %}
+      <a href={{product.url}} class="img-link link-grey">
+      {% endif %}
+      <div class="extras">        
+        {% for collection in product.collections %}
+          {% if collection.title == 'Hot Products' %}
+            <p class="tag">Hot</p>
+          {% endif %}
+          {% if collection.title == 'New Products' %}
+            <p class="tag">New</p>
+          {% endif %}
+  		{% endfor %}
+      </div>
+        
+      <div class="square">
+        <div class="content">
+          <img src="{{product.images[0].src | product_img_url: 'medium'}}" alt="{{ product.title }}">
+        </div>
+        <span class="sale">Sale</span>
+	  </div>
+         
+        
+        <h2 class="title h2_title" >{{ product.title }}</h2>
+        
+        <p class="text price_height" >
+          
+          {% if product.available %}
+            {% if sale %}
+              <span class="old-price">{{ product.compare_at_price_min | money}}</span>
+            {% endif %}    
+              <span class="price">{{ product.price | money }}</span>
+          {% else %}
+              <span class="price">SOLD OUT</span>
+          {% endif %}
+        </p>
+      {% if product.available %}
+      </a>
+      {% endif %}
+      <div class="bottom"></div>
+    </div>  

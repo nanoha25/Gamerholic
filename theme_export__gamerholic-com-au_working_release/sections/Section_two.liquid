@@ -1,0 +1,120 @@
+<div class="container SECTION_TWO">
+<div class="hometabletcg">
+	<div class="col-xs-12 no-gutter main_div" style="background: #c62828;">
+
+      <div class="col-md-12 col-lg-4 no-gutter">
+        <h2 class="center heading_font" style="text-align:center;color:white">
+          {{section.settings.textid1}}
+        </h2>
+        <div class="col-xs-12 center no-gutter" style="text-align:center;text-decoration: underline;font-weight: bold;padding:0 0 13px 0">
+          <a style="color: #ffcc33 !important" href="{{section.settings.urls1}}">
+            {{section.settings.SubHeading1}}
+          </a>
+        </div>
+
+        <div class="homelist col-xs-12">
+          {% for link in linklists[section.settings.Menus1].links %}
+          <a href="{{ link.url }}"><div class="col-xs-6 col-sm-4 col-md-2 col-lg-6 no-gutter homes">
+            {{ link.title }}
+            </div></a>
+          {% endfor %}
+
+
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+		
+      <div class="col-md-12 col-lg-8 no-gutter main_div">
+        {% for block in section.blocks %}
+
+        <a href="{{block.settings.link1}}">
+          <div class="col-xs-4 col-sm-3 no-gutter hometable">
+            <img src="{{block.settings.cartimage1 | img_url:'master'}}">
+          </div>
+        </a>
+        {% endfor %}
+
+
+
+        <div class="clear"></div>
+      </div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Card accessories",
+"class": "index-section section-2",
+  
+"settings": [
+    {
+      "type":"text",
+		"id":"textid1",
+	"label":"Heading"
+    },
+	{
+      "type":"text",
+		"id":"SubHeading1",
+	"label":"SubHeading"
+    },
+	{
+      "type":"url",
+		"id":"urls1",
+	"label":"SubHeading urls"
+    },
+
+{
+   "type":      "link_list",
+   "id":        "Menus1",
+   "label":     "Menus"
+}
+  ],
+     "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "cartimage1",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link1",
+          "label": "Link"
+          
+        }
+      ]
+    }
+  ],
+"presets": [
+    {
+      "name": "Section two",
+      "category": "Image"
+      }
+  ]
+  }
+{% endschema %}
+<style>
+  .homelist {
+    text-align: center;
+}
+
+.homelink {
+    padding: 12px;
+    font-size: 20px;
+    color: #fff;
+}
+  .section-2 .hometable img{
+  width:100%;
+  }
+  .section-2 .hometable {
+   padding-right: 0px;
+    padding-left: 0px;
+    border: 1px solid #000;
+}
+</style>
