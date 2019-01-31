@@ -6,9 +6,9 @@
 {% assign month = now %}
 {%else %}
 {% endif %}
-{% if month == '01'%}
+{% if month == '1'%}
 {% assign month = 'jan' %}
-{% elsif month == '2'%}
+{% elsif month == '02'%}
 {% assign month = 'feb' %}
 {% elsif month == '3'%}
 {% assign month = 'mar' %}
@@ -123,9 +123,9 @@
         {%for product in collections['pre-order'].products%}
         {%assign productDate = product.variants.first.barcode | split: '/'%}
 
-        {% if productDate[1] == '01'%}
+        {% if productDate[1] == '1'%}
         {% assign productDate = 'jan' %}
-        {% elsif productDate[1] == '2'%}
+        {% elsif productDate[1] == '02'%}
         {% assign productDate = 'feb' %}
         {% elsif productDate[1] == '3'%}
         {% assign productDate = 'mar' %}
@@ -165,9 +165,9 @@
         {%for product in collections['pre-order'].products%}
         {%assign productDate = product.variants.first.barcode | split: '/'%}
 
-        {% if productDate[1] == '01'%}
+        {% if productDate[1] == '1'%}
         {% assign productDate = 'jan' %}
-        {% elsif productDate[1] == '2'%}
+        {% elsif productDate[1] == '02'%}
         {% assign productDate = 'feb' %}
         {% elsif productDate[1] == '3'%}
         {% assign productDate = 'mar' %}
