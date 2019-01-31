@@ -1,0 +1,69 @@
+<div class="container">
+<div id="owl-main" class="owl-carousel owl-theme">
+{% for block in section.blocks %}
+  <a href="{{block.settings.slid_ulr}}">
+    <img src="{{block.settings.slide | img_url:'master'}}">
+  </a>
+{% endfor %}
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Slideshow",
+    "blocks":[
+      {
+        "type": "block-1",
+        "name": "Block 1",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slide",
+            "label": "Slide"
+          },
+		{
+            "type": "url",
+            "id": "slid_ulr",
+            "label": "Slide url"
+          }
+        ]
+      }
+    ],
+"presets": [
+    {
+      "name": "SLider",
+      "category": "Image"
+      }
+  ]
+  }
+{% endschema %}
+<style>
+#owl-main .owl-prev {
+    width: 60px;
+    background: #fff !important;
+    height: 60px;
+    position: absolute;
+    top: 40%;
+    margin-left: 0px;
+    display: block !important;
+    border: 0px solid black;
+    border-radius: 0px !important;
+}
+
+#owl-main .owl-next {
+width: 60px;
+   background: #fff !important;
+    height: 60px;
+    position: absolute;
+    top: 40%;
+    right: 0px;
+  border-radius: 0px !important;
+    display: block !important;
+    border:0px solid black;
+}
+
+#owl-main .owl-prev i,#owl-main .owl-next i {
+       transform: scale(3,4);
+    color: #000;
+    margin-top: 22px;
+}
+</style>

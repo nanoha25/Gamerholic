@@ -22,6 +22,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  
   {{ content_for_header }}
 
   {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }}
@@ -128,11 +129,12 @@
 
 </head>
 
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %} {%if template != 'index'%}body-fix{%endif%}">
+<body id="{{ page_title | handle }}" class="class_{{template |remove: '.'}}{% if customer %}customer-logged-in {% endif %} {%if template != 'index'%}body-fix{%endif%}">
 
 
+   
 
-
+      
       {% include 'site-nav' %}
 
 

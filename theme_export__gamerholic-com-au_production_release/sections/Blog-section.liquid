@@ -1,0 +1,49 @@
+<div class="container">
+  {%if section.settings.textid != blank %}
+<div class="divider xl-gap owl-divider">
+  <a href="{{section.settings.Headinglink}}" class="link-white"><h2>{{section.settings.textid}}</h2></a>
+</div>
+  {%endif%}
+
+<div class="row img-row medium-gap">
+  {% for article in blogs[section.settings.blogid].articles limit:4 %}
+  <div class="col-sm-3">
+    <a href="{{ article.url }}" class="img-link link">
+      <img src="{{article.image.src | img_url: 'large'}}">
+      <span class="secondary">{{ article.created_at | date: "%a, %b %d, %y"  }}<br></span>
+      <span>{{ article.title}}</span>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Blogs",
+"class": "index-section section-Blogs",
+"settings": [
+    {
+      "type":"text",
+		"id":"textid",
+	"label":"Heading"
+    },
+ {
+      "type":"url",
+		"id":"Headinglink",
+	"label":"Heading Link"
+    },
+	{
+   "type":      "blog",
+   "id":        "blogid",
+   "label":     "Text",
+   "info":      "Text"
+}
+  ],
+"presets": [
+    {
+      "name": "Section three",
+      "category": "Image"
+      }
+  ]
+  }
+{% endschema %}

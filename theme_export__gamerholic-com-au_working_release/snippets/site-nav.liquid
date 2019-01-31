@@ -1,4 +1,7 @@
 <div class="top-nav">
+  {% if  settings.promotionalBar-visible %}
+  {% include 'promotionalBar' %}
+{% endif  %} 
   <ul>
     <li>
       <a class="link-white" href="/collections/pre-order">PRE-ORDER</a>
@@ -32,7 +35,7 @@
     </li>
     <li class="social-link">
       <a href="/pages/faq" class="link-white">
-        BASE SHIPPING $8
+        BASE SHIPPING $10
       </a>
     </li>
     <!--

@@ -14,6 +14,7 @@ $base-font-family:        {{ settings.base_font_family }};
 $base-font-size:          {{ settings.base_font_size }};
 $heading-font-family:     $base-font-family;
 $heading-font-weight:     600;
+// promotionalBar.liquid
 
 /* Table of content */
 /* 1.  Base styles
@@ -767,3 +768,18 @@ footer {
   a + a { padding-left: 0.666 * $gutter; }
 }
 
+
+.prices {
+    text-align: center;
+}
+
+.promotionalBar {
+    color: $promotional-bar-text-color;
+    background: $promotional-bar-background-color;
+    text-align: center !important;
+    font-size: .8em;
+    font-weight: bold;
+}
+.darkHeader{
+  margin:0 !important;
+}

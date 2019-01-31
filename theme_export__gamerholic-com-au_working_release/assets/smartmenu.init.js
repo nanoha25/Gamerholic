@@ -37,12 +37,15 @@ $(function() {
     var $gap = $('#scroller-gap');
 
     var move = function() {
+            var heghth = $(".top-nav").height();
+            
+
         var st = $(window).scrollTop();
         var ot = $anchor.offset().top;
         if(st > ot) {
             $scroller.css({
                 position: "fixed",
-                top: "0px",
+                top: heghth,
                 width: "100%",
                 padding: "0px 0px 0px 0px",
             });

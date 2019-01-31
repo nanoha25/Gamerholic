@@ -100,7 +100,7 @@
     </div>
 
     <div class="row">
-      <div class="hidden-xs col-sm-3 col-md-2">
+      <div class="hidden-xs1 col-sm-3 col-md-2">
         {%assign collectionName = collection.title | remove: ' &' | remove: ' All'| replace: ' ', '-'%}
 
 
@@ -116,7 +116,7 @@
       </div>
 <!--      code for simple pre-order page   -->
       {% if month == now %}
-      <div class="hidden-xs col-sm-3 col-md-10">
+      <div class="hidden-xs1 col-sm-9 col-md-10">
 
 
         {%for product in collections['pre-order'].products%}
@@ -160,7 +160,7 @@
       {% else %}
 <!--  code for month based -->
       {% if month == 'jan' or month == 'feb' or month == 'mar' or month == 'apr' or month == 'may' or month == 'jun' or month == 'jul' or month == 'aug' or month == 'sep' or month == 'oct' or month == 'nov' or month == 'dec'%}
-      <div class="hidden-xs col-sm-3 col-md-10">
+      <div class="hidden-xs col-sm-9 col-md-10">
         {%for product in collections['pre-order'].products%}
         {%assign productDate = product.variants.first.barcode | split: '/'%}
 

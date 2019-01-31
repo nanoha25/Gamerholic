@@ -1,4 +1,4 @@
-<div class="container xxl-gap" id="search">
+<div class="container xxl-gap search_page" id="search">
   <form action="/search" method="get" class="search-form" role="search">
     <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
     <input type="submit" id="search-submit" value="Search" class="red-button" />
@@ -40,21 +40,26 @@
                   </div>
                 </div>
                 <p class="details">
-                  <h4 class="text">{{ item.title | highlight: search.terms | link_to: item.url}}</h4>
+                  <span class="title">{{ item.title | link_to: item.url}}</span>
                 </p>
+              <div class="prices">
+                <h2 class="money"><span> {{ item.price | money }}</span></h2>
               </div>
+              </div>
+      
       <div class="available">
   {%if item.available %}
- <div class="addtocart1">
+        <div class="addtocart1">
           <form method="post" action="/cart/add">
-  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-  <input type="submit" value="Add to cart" class="btn" />
-</form> 
-          </div>
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+            <input type="submit" value="Add to cart" class="btn" />
+          </form> 
+        </div>
   {%else%}
   <div class="badge badge--sold-out"><span class="badge-label">Sold Out</span></div>
   {%endif%}
   </div>
+      
             </div>
 
           {% cycle 'row-loop2': '', '', '', '', '', '</div> <hr class="divider" />' %}
@@ -79,3 +84,8 @@
   {% endif %}
 
 </div>
+<style>
+  .search_page ul {
+    padding-left: 0px;
+}
+</style>

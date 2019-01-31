@@ -72,4 +72,6 @@ jQuery(function($) {
     switchImage($(this).attr('href'), null, $('.product-photo-container img')[0]);
   } );
   
+ 
+  
 });

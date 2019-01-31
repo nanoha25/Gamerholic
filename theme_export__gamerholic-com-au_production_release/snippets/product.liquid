@@ -3,7 +3,7 @@
 	  {% assign sale = true %}
 	{% endif %} 
     
-	<div class="item product">
+	<div class="item product new_product">
       {% if product.available %}
       <a href={{product.url}} class="img-link link-grey">
       {% endif %}
@@ -22,13 +22,14 @@
         <div class="content">
           <img src="{{product.images[0].src | product_img_url: 'medium'}}" alt="{{ product.title }}">
         </div>
+        <span class="sale">Sale</span>
 	  </div>
-           
+         
         
         <h2 class="title h2_title" >{{ product.title }}</h2>
         
         <p class="text price_height" >
-          
+            
           {% if product.available %}
             {% if sale %}
               <span class="old-price">{{ product.compare_at_price_min | money}}</span>
@@ -41,5 +42,24 @@
       {% if product.available %}
       </a>
       {% endif %}
+      
       <div class="bottom"></div>
-    </div>
+    
+    </div>  
+<div class="available">
+  {%if product.available %}
+      <div class="addtocart1">
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+          <input type="submit" value="Add to cart" class="btn" />
+        </form> 
+      </div>
+      {%else%}
+      <div class="badge badge--sold-out"><span class="badge-label">Sold Out</span></div>
+      {%endif%}
+</div>
+<style>
+  .new_product {
+    margin-bottom: 0px !important;
+}
+</style>
