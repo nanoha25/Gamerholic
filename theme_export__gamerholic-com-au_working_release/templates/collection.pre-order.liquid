@@ -121,7 +121,7 @@
 
 
         {%for product in collections['pre-order'].products%}
-        {%assign productDate = product.variants.first.barcode | split: '||'%}
+        {%assign productDate = product.variants.first.barcode | split: '/'%}
 
         {% if productDate[1] == '1'%}
         {% assign productDate = 'jan' %}
@@ -163,7 +163,7 @@
       {% if month == 'jan' or month == 'feb' or month == 'mar' or month == 'apr' or month == 'may' or month == 'jun' or month == 'jul' or month == 'aug' or month == 'sep' or month == 'oct' or month == 'nov' or month == 'dec'%}
       <div class="hidden-xs col-sm-9 col-md-10">
         {%for product in collections['pre-order'].products%}
-        {%assign productDate = product.variants.first.barcode | split: '||'%}
+        {%assign productDate = product.variants.first.barcode | split: '/'%}
 
         {% if productDate[1] == '1'%}
         {% assign productDate = 'jan' %}
