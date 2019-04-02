@@ -50,7 +50,7 @@
       <div class="available">
   {%if item.available %}
         <div class="addtocart1">
-          <form method="post" action="/cart">
+          <form method="post" action="/cart/add">
             <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
             <input type="submit" value="Add to cart" class="btn" />
           </form>

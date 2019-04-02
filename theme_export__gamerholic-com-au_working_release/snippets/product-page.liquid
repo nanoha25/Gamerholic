@@ -168,7 +168,7 @@
           {% endif %}
 
           {% if product.available %}
-            <form method="post" action="/cart">
+            <form method="post" action="/cart/add">
               <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
               <input type="hidden" name="return_to" value="back" />
               <select id="quantity" name="quantity">
