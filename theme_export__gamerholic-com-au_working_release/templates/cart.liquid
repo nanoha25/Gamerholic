@@ -2,7 +2,7 @@
   <h1 class="heading">Shopping Cart</h1>
 
   {% if cart.item_count > 0 %}
-  <form action="/cart" method="post">
+  <form action="/cart" method="post"> 
   <table class="cart-table xl-gap" style="overflow-x:auto;">
     <thead>
       <tr>
@@ -14,20 +14,20 @@
         <th class="cart-remove">&nbsp;</th>
       </tr>
     </thead>
-
+    
     <tbody>
 
-    {% for item in cart.items %}
-
+    {% for item in cart.items %}    
+    
       {% comment %}
       Determining the handle of the collection that was last seen for the 'continue shopping' link.
       {% endcomment %}
-
+      
       {% assign collection_url = item.product.collections.last.url %}
       {% if collection_url == '/collections/frontpage' or collection_url == blank %}
         {% assign collection_url = '/collections/all' %}
       {% endif %}
-
+      
       {% if forloop.first %}
         {% assign continue_shopping_url = collection_url %}
       {% endif %}
@@ -55,20 +55,20 @@
         </td>
       </tr>
     {% endfor %}
-
+    
     </tbody>
-
+    
   </table>
-
+  
   <div id="update">
-
+    
     <button class="m-gap dark-blue-button" type="button" onclick="location.href='/products/gift-wrap';"><i class="fa fa-gift" aria-hidden="true"></i> Gift-Wrap</button>
   	<input class="m-gap blue-button" type="submit" name="update" value="Update Cart" />
   </div>
       <!-- Zip WIDGET -->
 {%include 'zip-widget'%}
 <style>
-  #shopify-zip-prod-widget > iframe {
+  #shopify-zip-prod-widget > iframe { 
     height: 60px!important;
     max-width: min-content!important;
     position: relative !important;
@@ -85,17 +85,17 @@
         <textarea name="note"></textarea>
       </div>
     </div>
-
+  
     <div class = "col-sm-6 xl-gap">
       <div class="checkout-price">
       	<h1>TOTAL: <span id="bk-cart-subtotal-price">{{ cart.total_price | money }}</span></h1>
       </div>
       <div class="checkout-button">
-        <input class="red-button" type="submit" name="checkout" value="CHECKOUT" />
+        <input class="red-button" type="submit" name="checkout" value="CHECKOUT" /> 
 	  </div>
     </div>
   </div>
-
+    
 </form>
 
 {% else %}

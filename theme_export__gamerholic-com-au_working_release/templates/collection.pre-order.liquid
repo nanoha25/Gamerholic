@@ -34,7 +34,7 @@
 
 <div class="preorder-page">
   <div class="container">
-    <h1 class="heading xl-gap">Pre-Order</h1>
+    <h1 class="heading xl-gap">Pre-Order</h1>  
     <h3 class="sub-heading">Want a product shipped to you as soon as it's released? Then checkout our catalog below for the latest pre-order products available.</h3>
 
     <div id="month-row" class='m-gap'>
@@ -114,7 +114,6 @@
         {% endfor %}
 
       </div>
-
 <!--      code for simple pre-order page   -->
       {% if month == now %}
       <div class="hidden-xs1 col-sm-9 col-md-10">
@@ -154,7 +153,7 @@
         {% if month == productDate %}
         <div class="col-sm-4 col-md-2">
           {%include 'product-preorder'%}
-        </div>
+        </div> 
         {%endif%}
         {%endfor%}
       </div>
@@ -196,7 +195,7 @@
         {% if month == productDate %}
         <div class="col-sm-4 col-md-2">
           {%include 'product-preorder'%}
-        </div>
+        </div> 
         {%endif%}
         {%endfor%}
       </div>
@@ -206,7 +205,7 @@
         {%for product in collection.products%}
         <div class="col-sm-4 col-md-2">
           {%include 'product-preorder'%}
-        </div>
+        </div>         
         {%endfor%}
       </div>
 <!--  code for tag based function -->
