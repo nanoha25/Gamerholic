@@ -49,10 +49,20 @@
       
       <div class="available">
   {%if item.available %}
-        <div class="addtocart1">
+        <div class="addtocart1 addtocart-js">
           <form method="post" action="/cart/add">
-            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+            <input type="hidden" name="id" value="{{ item.selected_or_first_available_variant.id }}" />
+            {% assign addtocart = true %}
+            {% for col in item.collections %}
+              {% if col.title == 'pre-order'  %}
+                <input type="submit" value="PRE-ORDER" class="btn" />
+            	{% assign addtocart = false %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            {% if addtocart %}
             <input type="submit" value="Add to cart" class="btn" />
+            {% endif %}
           </form> 
         </div>
   {%else%}

@@ -1,4 +1,8 @@
+<link rel="dns-prefetch" href="https://store.swymrelay.com" crossorigin>
+<link rel="dns-prefetch" href="//swymprod.azureedge.net/code/swym-shopify.js">
+<link rel="preconnect" href="//swymprod.azureedge.net/code/swym-shopify.js">
 <script id="swym-snippet">
+  window.swymLandingURL = document.URL;
   (function loadSwymFaster(){
     var elScripts = document.querySelectorAll("script:not([src]):not([class]):not([id])"), scriptLoadScript, scriptLoadScriptText;
     for(var i = 0; i < elScripts.length; i++){
@@ -22,7 +26,6 @@
       x.parentNode.insertBefore(s, x);
     }
   })();
-
   window.swymCart = {{ cart | json }};
   window.swymPageLoad = function(){
     window.SwymProductVariants = window.SwymProductVariants || {};
@@ -82,6 +85,7 @@
     var unknown = {et: 0};
     window.SwymPageData = unknown;
     {% endif %}
+    window.SwymPageData.uri = window.swymLandingURL;
   };
 
   if(window.selectCallback){

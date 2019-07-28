@@ -1,10 +1,11 @@
-<div class="top-nav">
+<div class="top-nav dotmagic">
   {% if  settings.promotionalBar-visible %}
   {% include 'promotionalBar' %}
 {% endif  %} 
-  <ul>
+  <ul class="container">
     <li>
-      <a class="link-white" href="/collections/pre-order">PRE-ORDER</a>
+      {% assign now = 'now' | date: "%b" | downcase %}
+      <a class="link-white" href="/collections/pre-order/{{ now }}">PRE-ORDER</a>
     </li>
     <li>
       <a class="link-white" href="/pages/sell">SELL</a>
@@ -18,11 +19,6 @@
     <li>
       <a class="link-white" href="/collections/new-products">NEW</a>
     </li>
-    <li id="cart-link">
-	   <a class="link-white" href="/cart"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i> {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>
-
-    </li>
-
     <li class="social-link">
       <a href="https://www.facebook.com/GamerholicAU/" class="link-white">
         <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
@@ -38,15 +34,6 @@
         BASE SHIPPING $10
       </a>
     </li>
-    <!--
-    <li class="social-link">
-      <a href="" class="link-white">
-        <i class="fa fa-snapchat fa-lg" aria-hidden="true"></i>
-      </a>
-    </li>
-	-->
-
-
   </ul>
 </div>
 
@@ -67,7 +54,7 @@
             <button class="icon"><i class="fa fa-search"></i></button>
         </form>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 dotmagic-nav">
         {% if customer  %}
     	  <a href="/account">Account</a>
           <span class="middle-nav-divider">|</span>
@@ -77,9 +64,66 @@
           <span class="middle-nav-divider">|</span>
           <a href="/account/register">Sign Up</a>
         {% endif %}
-      <div class="doubly-wrapper"></div>
-
-
+              
+        <a title="cart" href="/cart" class="dotmagic-cart">
+          <span class="cart-count">{{ cart.item_count }}</span>
+        </a>
+        <style>
+          .top-nav.dotmagic{
+            background: #cf120e;
+          }
+          .dotmagic-cart{
+            color: #fff;
+            font-size: 13px;
+            background: url(https://cdn.shopify.com/s/files/1/0987/8934/t/36/assets/2772_40x.png) no-repeat;
+            background-position: 5px;
+            font-family: Montserrat;
+            width: 57px;
+            height: 57px;
+            display: inline-block;
+            position: relative;
+            border-radius: 8px;
+          }
+          .dotmagic-cart:hover {
+            -webkit-transform: rotate(360deg) !important;
+            -moz-transform: rotate(360deg) !important;
+            -ms-transform: rotate(360deg) !important;
+            transform: rotate(360deg) !important;
+            -moz-transition: all 0.3s ease 0s !important;
+            -webkit-transition: all 0.3s ease 0s !important;
+            -o-transition: all 0.3s ease 0s !important;
+            transition: all 0.3s ease 0s !important;
+          }
+          .dotmagic-cart .cart-count{
+            line-height: 0;
+            font-weight: 600;
+            bottom: 16px;
+            color: #000;
+            position: absolute;
+            right: 6px;
+          }
+          .middle-nav .dotmagic-nav{
+            padding-right: 0;
+            text-align: right;
+          }
+          
+          @media only screen and (max-width: 767px) {
+            .middle-nav .dotmagic-nav {
+              padding-right: 0;
+              text-align: center;
+              margin: 31px 0;
+              padding-left: 0;
+            }
+          }
+          @media only screen and (max-width: 480px) {
+            .middle-nav .dotmagic-nav {
+              padding-right: 0;
+              text-align: center;
+              margin: 15px 0 25px 0;
+              padding-left: 0;
+            }
+          }
+        </style>
       </div>
     </div>
   </div>

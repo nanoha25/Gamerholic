@@ -24,14 +24,14 @@
 <div class="smile-shopify-init"
   data-channel-key="{{ smile_channel_key }}"
 {% if customer %}
-  data-customer-accepts-marketing="{{ smile_customer_accepts_marketing }}"
-  data-customer-email="{{ smile_customer_email }}"
-  data-customer-first-name="{{ smile_customer_first_name }}"
-  data-customer-id="{{ smile_customer_id }}"
-  data-customer-last-name="{{ smile_customer_last_name }}"
-  data-customer-orders-count="{{ smile_customer_orders_count }}"
-  data-customer-tags="{{ smile_customer_tags }}"
-  data-customer-total-spent="{{ smile_customer_total_spent }}"
+  data-customer-accepts-marketing="{{ smile_customer_accepts_marketing | escape }}"
+  data-customer-email="{{ smile_customer_email | escape }}"
+  data-customer-first-name="{{ smile_customer_first_name | escape }}"
+  data-customer-id="{{ smile_customer_id | escape }}"
+  data-customer-last-name="{{ smile_customer_last_name | escape }}"
+  data-customer-orders-count="{{ smile_customer_orders_count | escape }}"
+  data-customer-tags="{{ smile_customer_tags | escape }}"
+  data-customer-total-spent="{{ smile_customer_total_spent | escape }}"
   data-digest="{{ smile_digest }}"
 {% endif %}
 ></div>

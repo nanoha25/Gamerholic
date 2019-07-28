@@ -31,10 +31,10 @@
 
 
         {%if product.available %}
-        <div class="addtocart1">
+        <div class="addtocart1 addtocart-js">
           <form method="post" action="/cart/add">
             <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-            <input type="submit" value="Add to cart" class="btn" />
+            <input type="submit" value="PRE-ORDER" class="btn" />
           </form> 
         </div>
         {%else%}
