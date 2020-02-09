@@ -9,6 +9,9 @@ body {
   background-color: white;
   font-family: "Ubuntu", "Helvetica Nueu", Arial, Helvetica, sans-serif;
 }
+.top-nav .social-link {
+    display: block !important;
+}
 
 .secondary {
   color: #66696a
