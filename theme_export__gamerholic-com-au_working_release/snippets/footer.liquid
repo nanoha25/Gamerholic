@@ -1,105 +1,343 @@
-
-
-
-{%if template != 'index'%}<div style="height:60px; {%if template contains 'customers'%}height:0px;{%endif%}"></div>{%endif%}
-
-<div id="footer" class="{%if template contains 'customer'%}{%else%}xxl-gap{%endif%} {%if template != 'index'%}footer-fix{%endif%}">
-  <div class="container">
-    <div class="row" >
-      <div class="col-xs-6 col-sm-4">
-        <h3 class="footer-heading">FIND US</h3>
-        <p class="footer-item">
-          PO BOX 158
-        </p>
-        <p class="footer-item">
-          Allawah NSW 2218
-        </p>
-        <h3 class="footer-heading">PICKUP LOCATION</h3>
-        <p class="footer-item">
-          Hurstville NSW
-          <p></p>
-        <p>Please message on <a href="https://www.facebook.com/GamerholicAU" class="link-yellow">Facebook</a> for pickup services.</p>
-        </p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/css/menu.css" rel="stylesheet" type="text/css">
+    <link href="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/css/listing.css" rel="stylesheet" type="text/css">
+    <link href="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/css/listing-responsive.css" rel="stylesheet" type="text/css" media="screen">
+  </head>
+  <body>
+    <div class="pst-main">
+      <header id="pst-header">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5 col-sm-12 col-xs-12">
+              <div class="pst-logo"> <a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia" title="Collectables-Australia" target="_blank"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/logo.jpg" alt="" class="img-responsive"></a> </div>
+            </div>
+            <div class="col-md-7 col-sm-12 col-xs-12">
+              <div class="header-promo visible-desktop">
+                <div class="promo-box" style="margin-left: 0px;">
+                  <span class="icon-box"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/head-promo-1.png" alt=""></span>
+                  <span class="promo-text">
+                    FAST SHIPPING<br>
+                    <p>on most items</p>
+                  </span>
+                </div>
+                <div class="promo-box" style="margin-left: 18px;">
+                  <span class="icon-box"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/head-promo-2.png" alt=""></span>
+                  <span class="promo-text">
+                    TRUSTED STORE<br>
+                    <p>satisfaction guarantee</p>
+                  </span>
+                </div>
+                <div class="promo-box" style="margin-left: 20px;">
+                  <span class="icon-box"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/head-promo-3.png" alt=""></span>
+                  <span class="promo-text">
+                    Australia Owned<br>
+                    <p>and Operated</p>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pst-clear"></div>
+        <div class="menu-bg">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <nav id="menu">
+                  <input type="checkbox" id="toggle-nav"/> <label id="toggle-nav-label" for="toggle-nav"></label>
+                  <div class="box">
+                    <ul>
+                      <li><a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia" target="_blank">STORE HOME</a></li>
+                      <li><a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia/_i.html" target="_blank">STOR CATEGORIES</a></li>
+                      <li><a target="_blank" href="https://stores.ebay.com.au/collectablesaustralia/pages/payment" target="_blank">STORE POLICY</a></li>
+                      <li><a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia/_i.html?rt=nc&_sid=1103520273&_sop=10" target="_blank">NEW ARRIVALS</a></li>
+                      <li><a target="_blank" href="https://stores.ebay.com.au/collectablesaustralia/pages/contact-us" target="_blank">CONTACT US</a></li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="pst-clear"></div>
+      <div class="container">
+        <div class="listing-area">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="pst-listing-title">{{ title }}</div>
+            </div>
+          </div>
+          <div class="gal-desc-part">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="gal-container">
+                  <div class="slider"> <input type="radio" name="slide_switch" id="id1" checked="checked"/> <label for="id1" class="first"> <img src="{{ images[0] | image_size:'600px' }}" alt=""/> </label> <img src="{{ images[0] | image_size:'600px' }}" alt=""/> <input type="radio" name="slide_switch" id="id2"/> <label for="id2"> <img src="{{ images[1] | image_size:'600px' }}" alt=""/> </label> <img src="{{ images[1] | image_size:'600px' }}" alt=""/> <input type="radio" name="slide_switch" id="id3"/> <label for="id3"> <img src="{{ images[2] | image_size:'600px' }}" alt=""/> </label> <img src="{{ images[2] | image_size:'600px' }}" alt=""/></div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="desc-title">ITEM DESCRIPTION</div>
+                <div class="desc-box">
+                  <div class="text-regullar">
+                    <p>{{ description }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pst-clear"></div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="pst-tab">
+                <input type="radio" name="tabs" id="tabone" checked="checked"> <label for="tabone">Payment</label>
+                <div class="tab">
+                  <p> <strong>1. Paypal</strong> <br> <br> Any payment made by Paypal direct payment, will be received straight-away, However, e-cheque payment will take up to 3-5 business days to clear, orders will be only shipped once the payment is clear. <br> <br> <strong>2. Cash on Pick up</strong><br> <br> We offer pick ups at Hurstville. </p>
+                </div>
+                <input type="radio" name="tabs" id="tabtwo"> <label for="tabtwo">Shipping</label>
+                <div class="tab">
+                  <p> For any inquires please message us on <a target="_blank" href="https://contact.ebay.com.au/ws/eBayISAPI.dll?ReturnUserEmail&requested=gamerholic&frm=3692&iid=-1&de=off&redirect=0" target="_blank">eBay</a> </p>
+                </div>
+                <input type="radio" name="tabs" id="tabthree"> <label for="tabthree">Returns</label>
+                <div class="tab">
+                  <p> <strong>At Gamerholic we offer both Courier Service and Australia Post</strong> to ensure the fastest delivery to you however shipping sometimes can be beyond our control. The below table is a guide to when you can expect to have your purchases delivered to you a day your order has been processed. We will contact you should there be any delay in the below delivery times. </p>
+                  <br> <strong>Delivery Guide (Non Express):</strong><br>
+                  <div class="table-responsive">
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>Destination</td>
+                          <td>Business Days(Estimate)</td>
+                        </tr>
+                        <tr>
+                          <td>NSW, Brisbane Metro, Victoria, Canberra</td>
+                          <td>2 to 6</td>
+                        </tr>
+                        <tr>
+                          <td>Queensland Country</td>
+                          <td>3 to 6 </td>
+                        </tr>
+                        <tr>
+                          <td>Far North Queensland</td>
+                          <td>4 to 12</td>
+                        </tr>
+                        <tr>
+                          <td>South Australia </td>
+                          <td>3 to 5 </td>
+                        </tr>
+                        <tr>
+                          <td>Perth Metro</td>
+                          <td>3 to 7</td>
+                        </tr>
+                        <tr>
+                          <td>WA Country, Alice Spring</td>
+                          <td>3 to 9</td>
+                        </tr>
+                        <tr>
+                          <td>Tasmania, Darwin</td>
+                          <td>3 to 6 </td>
+                        </tr>
+                        <tr>
+                          <td>Tasmania Remote,NT Country</td>
+                          <td>5 to 12</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <strong>Shipping Locations:</strong><br> <br>
+                  <ul>
+                    <li> Australia </li>
+                    <li>New Zealand </li>
+                  </ul>
+                </div>
+                <input type="radio" name="tabs" id="tabfour"> <label for="tabfour">About Us</label>
+                <div class="tab">
+                  <p> Gamerholic is an Australian online store based in NSW founded in 2015. We sell discounted Yugioh TCG, Magic TCG, Pokemon TCG, Card Accessories, and Board Games. <br> <br> All our prices are in Australian Dollars and our delivery times are very reasonable. For more information about how long it may take for you to receive your order, click 'Shipping Tab' <br> <br> We currently only have a small range of products and seek to expand our product range in the near future. If there are any products that you would like to see stocked in our store send us a suggestion via eBay Message </p>
+                </div>
+                <input type="radio" name="tabs" id="tabfive"> <label for="tabfive">Contact Us</label>
+                <div class="tab">
+                  <p> For any wholesale enquirers please message us via <a target="_blank" href="https://contact.ebay.com.au/ws/eBayISAPI.dll?ReturnUserEmail&requested=gamerholic&frm=3692&iid=-1&de=off&redirect=0" target="_blank">eBay</a>. <br> <br> We look for both sellers and suppliers </p>
+                </div>
+                <input type="radio" name="tabs" id="tabsix"> <label for="tabsix">Wholesale</label>
+                <div class="tab">
+                  <p>We do offer pick up at various location around Sydney. Please refer below.  <br> Please message us on eBay for pick up locations and times.<br> <br> <strong>Pick Up Locations:</strong></p>
+                  <ul>
+                    <li>Macquarie Park (Monday-Friday) </li>
+                    <li>Hurstville (Most Days) </li>
+                    <li>Sylvania Waters (Everyday) </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pst-clear"></div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="pst-banner"> <a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia/_i.html" target="_blank"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/banner.jpg" alt="" class="img-responsive"></a></div>
+            </div>
+          </div>
+          <div class="pst-clear"></div>
+          <div class="banner-2-bg">
+            <div class="row">
+              <div class="col-md-7 col-sm-7 col-xs-12">
+                <div class="location-box">
+                  <div class="location">
+                    <div class="location-icon"><i class="fa fa-map-marker"></i></div>
+                    <div class="location-text">
+                      Location:
+                      <p>Hurstville or Sylvania Waters<br> Pick Up Hours: 8AM-8PM 7 Days<br> </p>
+                    </div>
+                  </div>
+                  <div class="massage-btn"><a target="_blank" href="https://contact.ebay.com/ws/eBayISAPI.dll?ContactUserNextGen&recipient=gamerholic" target="_blank">Send Us A Message</a></div>
+                </div>
+              </div>
+              <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="gift-bg">
+                  <div class="gift-box">
+                    <a target="_blank" href="https://www.ebay.com.au/itm/Gift-Wrapping-Black-Box-/272863354839?hash=item3f87ec5fd7" target="_blank"></a>
+                    <div class="gift-icon"><i class="fa fa-gift"></i></div>
+                    <div class="gift-text">
+                      gift wrapping
+                      <p>Click here for more details</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pst-clear"></div>
+          <div class="pst-cat">
+            <div class="row">
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="cat-box">
+                  <a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia_Board-Games_W0QQfsubZ28405761013" target="_blank"></a>
+                  <div class="cat-img"> <img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-img-1.jpg" alt="" class="img-responsive"> </div>
+                  <div class="cat-info">
+                    <div class="cat-icon"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-icon.png" alt=""></div>
+                    <h2>Board Games</h2>
+                    <h5>Browse all items</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="cat-box">
+                  <a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia_Card-Games_W0QQfsubZ28405762013" target="_blank"></a>
+                  <div class="cat-img"> <img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-img-2.jpg" alt="" class="img-responsive"> </div>
+                  <div class="cat-info">
+                    <div class="cat-icon"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-icon.png" alt=""></div>
+                    <h2>Card Games</h2>
+                    <h5>Browse all items</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="cat-box">
+                  <a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia_Pokemon_W0QQfsubZ28405765013" target="_blank"></a>
+                  <div class="cat-img"> <img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-img-3.jpg" alt="" class="img-responsive"> </div>
+                  <div class="cat-info">
+                    <div class="cat-icon"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-icon.png" alt=""></div>
+                    <h2>Pokemon</h2>
+                    <h5>Browse all items</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pst-clear"></div>
+            <div class="row">
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="cat-box">
+                  <a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia_Yugioh_W0QQfsubZ28405764013" target="_blank"></a>
+                  <div class="cat-img"> <img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-img-4.jpg" alt="" class="img-responsive"> </div>
+                  <div class="cat-info">
+                    <div class="cat-icon"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-icon.png" alt=""></div>
+                    <h2>Yugioh</h2>
+                    <h5>Browse all items</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="cat-box cat-active">
+                  <a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia/_i.html" target="_blank"></a>
+                  <div class="cat-img"> <img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-img-5.jpg" alt="" class="img-responsive"> </div>
+                  <div class="cat-info">
+                    <div class="cat-icon"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-icon.png" alt=""></div>
+                    <h2>MORE CATEGORIES</h2>
+                    <h5>Browse all items</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="cat-box">
+                  <a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia_Console-Accessories_W0QQfsubZ50843565013" target="_blank"></a>
+                  <div class="cat-img"> <img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-img-6.jpg" alt="" class="img-responsive"> </div>
+                  <div class="cat-info">
+                    <div class="cat-icon"><img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/cat-icon.png" alt=""></div>
+                    <h2>Console Games</h2>
+                    <h5>Browse all items</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="col-xs-6 col-sm-4">
-        <h3 class="footer-heading">Customer Service</h3>
-
-        <a href="/pages/about-us" class="footer-link">
-          <p class="footer-item">
-            About Us
-          </p>
-        </a>
-        <a href="/pages/customer-service-policy" class="footer-link">
-          <p class="footer-item">
-            Customer Service Policy
-          </p>
-        </a>
-        <a href="#zbwid-1368c0b1" class="footer-link">
-          <p class="footer-item">
-            Contact Us
-          </p>
-        </a>
-        <a href="/pages/sell" class="footer-link">
-          <p class="footer-item">
-            Sell To Us
-          </p>
-        </a>
-        <a href="/pages/shipping-preorder-policy" class="footer-link">
-          <p class="footer-item">
-            Shipping & PREORDER Policy
-          </p>
-        </a>
-        <a href="/pages/return-refund-policy" class="footer-link">
-          <p class="footer-item">
-            Return & Refund Policy
-          </p>
-        </a>
-        <a href="/pages/price-match" class="footer-link">
-          <p class="footer-item">
-            Price Match
-          </p>
-        </a>
-        <a href="/pages/faq" class="footer-link">
-          <p class="footer-item">
-            FAQ
-          </p>
-        </a>
+      <div class="pst-clear"></div>
+      <div class="pst-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12 visible-desktop">
+              <div class="f-row-head">Quick Links</div>
+              <div class="f-quick-link">
+                <ul>
+                  <li><a target="_blank" href="https://stores.ebay.com.au/collectablesaustralia/pages/payment" target="_blank">- Payment Details</a></li>
+                  <li><a target="_blank" href="https://stores.ebay.com.au/collectablesaustralia/pages/Shipping" target="_blank">- Shipping Details</a></li>
+                  <li><a target="_blank" href="https://stores.ebay.com.au/collectablesaustralia/pages/returns" target="_blank">- Returns</a></li>
+                  <li><a target="_blank" href="https://stores.ebay.com.au/collectablesaustralia/pages/about-us" target="_blank">- About Us</a></li>
+                  <li><a target="_blank" href="https://stores.ebay.com.au/collectablesaustralia/pages/contact-us" target="_blank">- Contact Us</a></li>
+                </ul>
+                <ul>
+                  <li><a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia" target="_blank">- Store Home</a></li>
+                  <li><a target="_blank" href="https://my.ebay.com.au/ws/eBayISAPI.dll?AcceptSavedSeller&sellerid=gamerholic&refid=store&ssPageName=STORE:HTMLBUILDER:SIMPLEPAGE" target="_blank">- Add to Favourites</a></li>
+                  <li><a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia/_i.html?rt=nc&_sid=1103520273&_sop=10" target="_blank">- New Arrivals</a></li>
+                  <li><a target="_blank" href="https://stores.ebay.com.au/Collectables-Australia/_i.html?rt=nc&_sid=1103520273&_sop=1" target="_blank">- Ending Soon</a></li>
+                  <li><a target="_blank" href="https://feedback.ebay.com.au/ws/eBayISAPI.dll?ViewFeedback&userid=gamerholic" target="_blank">- Feedback</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 visible-desktop">
+              <div class="f-row-head">Payment Options</div>
+              <div class="f-payment">
+                <li>Secure Payments by </li>
+                <img src="https://www.pstnow.com/docs/pt/gamerholic-australia/listing_no_js/images/paypal.png" class="img-responsive" alt=""/>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 visible-desktop">
+              <div class="newslatter">
+                <div class="f-row-head">Store Newsletter</div>
+                <div class="pst-address">
+                  <p>Add Store to your Favorites and receive email newsletters about new items and special promotions!</p>
+                </div>
+                <div class="sign-up"><a target="_blank" href="https://my.ebay.com.au/ws/eBayISAPI.dll?AcceptSavedSeller&sellerid=gamerholic&refid=store&ssPageName=STORE:HTMLBUILDER:SIMPLEPAGE" target="_blank">Sign Up Now</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="f-last-row">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="pst-copyright">Copyright © Gamerholic Australia.</div>
+                <div class="pst-designer">eBay Store Designed & Developed by Gamerholic Australia.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="col-xs-12- col-sm-4">
-        <h3 class="footer-heading">
-          NEWSLETTER
-        </h3>
-        <p class="footer-item">
-          Signup for the latest products and exclusive discounts!
-        </p>
-
-        <!-- Begin MailChimp Signup Form -->
-
-<div id="mc_embed_signup">
-<form action="//nngames.us14.list-manage.com/subscribe/post?u=51af69cd7755695fd37260534&amp;id=a7e202ac7a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-    <div id="mc_embed_signup_scroll">
-
-<div class="mc-field-group">
-	<input type="email" value="" placeholder="Your Email" name="EMAIL" class="required email" id="mce-EMAIL">
-</div>
-	<div id="mce-responses" class="clear">
-		<div class="response" id="mce-error-response" style="display:none"></div>
-		<div class="response" id="mce-success-response" style="display:none"></div>
-	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_51af69cd7755695fd37260534_a7e202ac7a" tabindex="-1" value=""></div>
-    <div class="clear"><input type="submit" value="SUBSCRIBE" name="subscribe" id="mc-embedded-subscribe" class="red-button"></div>
     </div>
-</form>
-</div>
-<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='COMPANY';ftypes[3]='text';fnames[4]='ADDRESS';ftypes[4]='address';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-<!--End mc_embed_signup-->
-
-      </div>
-    </div>
-  </div>
-  <div id="footer-bottom">
-    <p>GAMERHOLIC © 2019</p>
-  </div>
-</div>
+  </body>
+</html>
