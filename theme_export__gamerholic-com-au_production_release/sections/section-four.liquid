@@ -1,26 +1,27 @@
 <div class="container padding-top">
 <div class="hometabletcg" style="margin:0px 0">
-	<div class="col-xs-12 no-gutter main_div" style="background:#292929">
+	<div class="col-xs-12 no-gutter main_div " style="background:#292929">
 
-      <div class="col-md-12 col-lg-4 no-gutter section-44-padding">
-        <h2 class="center heading_font" style="text-align:center; color:white">{{section.settings.textid}}</h2>
-        <div class="col-xs-12 center no-gutter" style="text-align:center;text-decoration: underline;font-weight: bold;padding:0 0 13px 0">
-          <a style="color: #ffcc33 !important" href="{{section.settings.urls}}">{{section.settings.SubHeading}}</a>
-        </div>
+		<div class="col-md-12 col-lg-4 no-gutter section-44-padding">
+          <h2 class="center heading_font" style="text-align:center;
+                                    color:white">{{section.settings.textid}}</h2>
+			<div class="col-xs-12 center no-gutter" style="text-align:center;text-decoration: underline;font-weight: bold;padding:0 0 13px 0">
+				<a style="color: #ffcc33 !important" href="{{section.settings.urls}}">{{section.settings.SubHeading}}</a>
+			</div>
 
-        <div class="homelist col-xs-12">
-          {% for link in linklists[section.settings.Menus].links  limit:6 %}
-          <div class="col-xs-6 col-sm-4 col-md-2 col-lg-6 no-gutter homes">
-            <a href="{{ link.url }}"> 
-              {{ link.title }}
-            </a>
+          <div class="homelist col-xs-12">
+            {% for link in linklists[section.settings.Menus].links  limit:6 %}
+            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-6 no-gutter homes">
+              <a href="{{ link.url }}"> 
+                {{ link.title }}
+              </a>
+            </div>
+            {% endfor %}
+
+
+            <div class="clear"></div>
           </div>
-          {% endfor %}
-
-
-          <div class="clear"></div>
-        </div>
-        <div class="clear"></div>
+                                <div class="clear"></div>
 		</div>
 		
       <div class="col-md-12 col-lg-8 no-gutter main_div">
@@ -46,7 +47,7 @@
 </div>
 {% schema %}
   {
-    "name": "Trading Card Games",
+    "name": "Puzzles & Toys",
 "class": "index-section section-3",
 "settings": [
     {
@@ -92,7 +93,7 @@
   ],
 "presets": [
     {
-      "name": "Section three",
+      "name": "Section Four",
       "category": "Image"
       }
   ]
