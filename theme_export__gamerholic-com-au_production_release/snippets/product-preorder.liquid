@@ -1,43 +1,41 @@
 {% assign sale = false %}
-    {% if product.compare_at_price_min > 0 and product.price != product.compare_at_price_min %}
-	  {% assign sale = true %}
+{% if product.compare_at_price_min > 0 and product.price != product.compare_at_price_min %}
+{% assign sale = true %}
 
-	{% endif %} 
-    
-	<div class="product">
-      <a href={{product.url}} class="img-link link-grey">
-      <div class="extras">
-        <p class="availability1">Available: </p>
-        <p class="availability2">{{product.variants.first.barcode}}</p>
-      
-        </div>
-      
-        
-        <img src="{{product.images[0].src | product_img_url: 'medium'}}" alt="{{ product.title }}">
-        <p class="text">
-          <span class="title">{{ product.title }}</span>
-          {% if sale %}
-			<span class="old-price">{{ product.compare_at_price_min | money}}</span>
-		  {% endif %}    
-          
-          <span class="price">{{ product.price | money }}</span>
-        </p>
-      </a>
-      <div class="bottom"></div>
-      
-     
+{% endif %} 
+
+<div class="product">
+  <a href={{product.url}} class="img-link link-grey">
+    <div class="extras">
+      <p class="availability1">Available: </p>
+      <p class="availability2">{{product.variants.first.barcode}}</p>
     </div>
- <div class="available">
+
+    <img src="{{product.images[0].src | product_img_url: 'medium'}}" alt="{{ product.title }}">
+    <p class="text">
+      <span class="title">{{ product.title }}</span>
+      {% if sale %}
+      <span class="old-price">{{ product.compare_at_price_min | money}}</span>
+      {% endif %}    
+
+      <span class="price">{{ product.price | money }}</span>
+    </p>
+  </a>
+  <div class="bottom"></div>
 
 
-        {%if product.available %}
-        <div class="addtocart1 addtocart-js">
-          <form method="post" action="/cart/add">
-            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-            <input type="submit" value="PRE-ORDER" class="btn" />
-          </form> 
-        </div>
-        {%else%}
-        <div class="badge badge--sold-out"><span class="badge-label">Sold Out</span></div>
-        {%endif%}
-      </div>
+</div>
+<div class="available">
+
+
+  {%if product.available %}
+  <div class="addtocart1 addtocart-js">
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+      <input type="submit" value="PRE-ORDER" class="btn" />
+    </form> 
+  </div>
+  {%else%}
+  <div class="badge badge--sold-out"><span class="badge-label">Sold Out</span></div>
+  {%endif%}
+</div>

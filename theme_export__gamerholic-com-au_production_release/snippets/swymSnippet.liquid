@@ -109,6 +109,8 @@
     })();
   }
   window.swymCustomerId = {% if customer %}"{{ customer.id }}"{% else %}null{% endif %};
+  window.swymCustomerExtraCheck = {% if customer and customer.tags.size > 0 %}true{% else %}null{% endif %};
+
   var swappName = ({{ shop.metafields.swym.app | json }} || "Wishlist");
   var swymJSObject = {
     pid: {{ shop.metafields.swym.pid | json }} || "iTJvPHcMPkWR5n6LtycCisgQFqo2C7L4+LAVo8+Mdfk=",
@@ -163,6 +165,20 @@
     {% endif %}
   }
 </script>
+{% if customer %}
+<script id="swym-wrap-login-handler">
+window.SwymCallbacks = window.SwymCallbacks || [];
+window.SwymCallbacks.push(function(swat) {
+  if(swat.isAlreadyAuth()) {
+    var postLoginRedirect = swat.storage.get(swat.key.POSTLOGINRD);
+    if(postLoginRedirect && postLoginRedirect != window.location) {
+      swat.storage.remove(swat.key.POSTLOGINRD);
+      window.location = postLoginRedirect;
+    }
+  }
+});
+</script>
+{% endif %}
 <style id="safari-flasher-pre"></style>
 <script>
   if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {

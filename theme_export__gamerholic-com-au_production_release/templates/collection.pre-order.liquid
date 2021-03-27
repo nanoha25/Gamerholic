@@ -121,13 +121,13 @@
       <div class="hidden-xs1 col-sm-9 col-md-10">
       {% if current_tags %}
       {% for product in collection.products %}
-      <div class="col-sm-4 col-md-2">
+      <div class="col-sm-4 col-md-3">
         {%include 'product-preorder'%}
       </div> 
       {% endfor %}
       {% else %}
       {% for product in collection.products %}
-      <div class="col-sm-4 col-md-2">
+      <div class="col-sm-4 col-md-3">
         {%include 'product-preorder'%}
       </div>
       {% endfor %}
@@ -142,13 +142,13 @@
 		
         {% if current_tags %}
         {% for product in collection.products %}
-          <div class="col-sm-4 col-md-2">
+          <div class="col-sm-4 col-md-3">
             {%include 'product-preorder'%}
           </div> 
         {% endfor %}
         {% else %}
         {% for product in collection.products %}
-          <div class="col-sm-4 col-md-2">
+          <div class="col-sm-4 col-md-3">
             {%include 'product-preorder'%}
           </div>
         {% endfor %}
@@ -187,7 +187,7 @@
         <!--          <h2>{{ month }}</h2> -->
 
         {% if month == productDate %}
-        <div class="col-sm-4 col-md-2">
+        <div class="col-sm-4 col-md-3">
           {%include 'product-preorder'%}
         </div> 
         {%endif%}
@@ -229,7 +229,7 @@
         <!--          <h2>{{ month }}</h2> -->
 
         {% if month == productDate %}
-        <div class="col-sm-4 col-md-2">
+        <div class="col-sm-4 col-md-3">
           {%include 'product-preorder'%}
         </div> 
         {%endif%}
@@ -239,7 +239,7 @@
 <!--  code for tag based function -->
       <div class="hidden-xs col-sm-3 col-md-10">
         {%for product in collection.products%}
-        <div class="col-sm-4 col-md-2">
+        <div class="col-sm-4 col-md-3">
           {%include 'product-preorder'%}
         </div>         
         {%endfor%}

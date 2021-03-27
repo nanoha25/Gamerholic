@@ -5,6 +5,7 @@
 <!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js {%if template != 'index'%}html-fix{%endif%}"> <!--<![endif]-->
 <head>
+  <meta name="google-site-verification" content="9E9zDmgs5s09UNAQE0f7ZesQljZWJUVa80tcQuU1Rno" />
   <meta charset="utf-8" />
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
 
@@ -4873,7 +4874,8 @@
         $('#myModal .continue-shopping.btn').click(function(){
           $('#myModal').hide();
         });
-        $('.addtocart-js input[type=submit]').click(function () {
+        $('.addtocart-js input[type=submit]').click(function (e) {
+          e.preventDefault();
           var formdata = $(this).closest('form').serialize();
           $.ajax({
             url: '/cart/add.js',
@@ -4887,7 +4889,13 @@
                 $("html, body").animate({ scrollTop: 0 }, "slow");
                 $('.dotmagic-cart .cart-count').html(cart.item_count);
                 var html = '';
+                var preorder = false;
                 for(i = 0; i < cart.items.length; i++){
+                  var $title = cart.items[i].title.toLowerCase();
+                    if($title.indexOf('preorder') != -1 || $title.indexOf('pre-order') != -1){
+                      preorder = true;
+                    }
+
                   var cart_data = cart.items[i];
                   html += '<div class="ajaxifyCart--product"><div class="ajaxifyCart--row"><div class="product-cart-popup"><div class="row">';
                   html += '<div class="col-xs-12 col-sm-3 col-md-3 cart-popup-left"><a href="'+cart_data.url+'" class="ajaxCart--product-image"><img src="'+cart_data.image+'"></a></div>';
@@ -4895,6 +4903,36 @@
                   html += '<div class="cart-name"><a href="'+cart_data.url+'" class="h4">'+cart_data.product_title+'</a><p></p></div>';
                   html += '<div class="cart-price"><p>'+cart_data.quantity+' x &nbsp;</p><p><span class="money">'+Shopify.formatMoney(cart_data.price);+'</span></p></div>';
                   html += '</div></div></div></div></div></div>';
+                }
+                if(preorder){
+                  $("label.select_check_box").show();
+                   $("label.select_check_box").show();
+                  $(function(){
+                    var requiredCheckboxes = $('.select_check_box :checkbox[required]');
+                    requiredCheckboxes.change(function(){
+                      if(requiredCheckboxes.is(':checked')) {
+                        requiredCheckboxes.removeAttr('required');
+                        $(".hide_checkout_btn").show();
+                        $(".select_check_box").removeClass("please-select-field");
+                        $(".show-preorder").hide();
+                      } else {
+                        requiredCheckboxes.attr('required', 'required');
+                        $(".hide_checkout_btn").hide();
+                        $(".show-preorder").show();
+                      }
+                    });
+                  });
+                  $(".show-preorder").click(function(){
+                    $(".select_check_box").addClass("please-select-field");
+                  });
+                  $(".hide_checkout_btn").click(function(){
+                    $(".select_check_box").removeClass("please-select-field");
+                  });
+                
+                }else{
+                  $("label.select_check_box").hide();
+                    $("button.btn.hide_checkout_btn").show();
+                    $("button.btn.show-preorder").hide();
                 }
                 $('#myModal .product-cart-popup-main .ajaxifyCart--products').html(html);
                 $('#myModal').show();
@@ -4906,8 +4944,33 @@
       }
     });
   </script>
-
-
+  {% if template contains 'cart'%}
+  <script>
+    $(document).ready(function(){
+      $(function(){
+        var requiredCheckboxes = $('.select_check_box :checkbox[required]');
+        requiredCheckboxes.change(function(){
+          if(requiredCheckboxes.is(':checked')) {
+            requiredCheckboxes.removeAttr('required');
+            $(".hide_checkout_btn").show();
+             $(".select_check_box").removeClass("please-select-field");
+            $(".show-preorder").hide();
+          } else {
+            requiredCheckboxes.attr('required', 'required');
+            $(".hide_checkout_btn").hide();
+            $(".show-preorder").show();
+          }
+        });
+      });
+      $(".show-preorder").click(function(){
+        $(".select_check_box").addClass("please-select-field");
+      });
+       $(".hide_checkout_btn").click(function(){
+        $(".select_check_box").removeClass("please-select-field");
+      });
+    });
+  </script>
+{% endif %}
   <style>
     .darkHeader {
       margin-top: 34px;

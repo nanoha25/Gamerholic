@@ -77,7 +77,18 @@
   }
 </style>
 <span style="cursor:pointer" id="shopify-zip-prod-widget" data-zm-asset="productwidget" data-zm-widget="popup" data-zm-popup-asset="termsdialog"></span>
-<!-- end Zip WIDGET -->
+    {% assign show_btn_checkout = false %}
+    {% for item in cart.items %}
+    {% for collection in item.product.collections %}
+    {% if collection.handle == "pre-order" %}
+     {% assign show_btn_checkout = true %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+{% if show_btn_checkout %}
+    <div class="cart_goto_checkout"> <label class="select_check_box">{{ settings.order_informatio_text }}  </label></div>
+   {% endif %}
+    <!-- end Zip WIDGET -->
   <div class="row ">
     <div class = "col-sm-6 xl-gap">
       <div class="instructions">
@@ -91,7 +102,10 @@
       	<h1>TOTAL: <span id="bk-cart-subtotal-price">{{ cart.total_price | money }}</span></h1>
       </div>
       <div class="checkout-button">
-        <input class="red-button" type="submit" name="checkout" value="CHECKOUT" /> 
+        <input class="red-button " type="submit" name="checkout" value="CHECKOUT" /> 
+       {% comment %} {% if show_btn_checkout %}
+        <input class="red-button show-preorder" type="button" value="CHECKOUT" >
+        {% endif %}  {% endcomment %}
 	  </div>
     </div>
   </div>
