@@ -150,6 +150,7 @@
   {% if template == 'index' %}
 
 
+
   {% endif %}
 
   <!-- BEEKETINGSCRIPT CODE START -->{% include 'bk-tracking' %}<!-- BEEKETINGSCRIPT CODE END -->
@@ -161,7 +162,7 @@
   {% include 'smile-initializer' %}
 
   {% include 'smile-ui-launcher' %}
-  
+
   {% include 'cart-popup' %}
   <script>
     $(document).ready(function(){
@@ -171,12 +172,12 @@
 //         $('.newsletter_popup').hide();
 //         $('.overlays').hide();
 //       });
-      
+
       $('.overlays, .upsell-no-btn.close').click(function(){
         $('.overlays').hide();
         $('.newsletter_popup').hide();
       });
-      $(window).scroll(function() {   
+      $(window).scroll(function() {
         var scroll = $(window).scrollTop();
         if (scroll > 0) {
           //clearHeader, not clearheader - caps H
@@ -197,7 +198,7 @@
 
       $('.overlays').click(function(e) // You are clicking the close button
                            {
-        $('.newsletter_popup').fadeOut(); 
+        $('.newsletter_popup').fadeOut();
         $('.overlays').fadeOuts();// Now the pop up is hiden.
       });
 
@@ -211,7 +212,7 @@
       console.log($.cookie("example"));
       var cookie=$.cookie("example");
       if(cookie=='foo'){
-        $('.newsletter_popup').hide(); 
+        $('.newsletter_popup').hide();
         $('.overlays').hide();
       }
       else{
@@ -219,10 +220,10 @@
         var minutes = 30;
         date.setTime(date.getTime() + (minutes * 60 * 1000));
         $.cookie("example", "foo", { expires: date });
-        $('.newsletter_popup').fadeIn(); 
+        $('.newsletter_popup').fadeIn();
         $('.overlays').fadeIn();
       }
-      
+
       if(innerWidth > 768){
         $('#myModal .continue-shopping.btn').click(function(){
           $('#myModal').hide();
@@ -281,7 +282,7 @@
                   $(".hide_checkout_btn").click(function(){
                     $(".select_check_box").removeClass("please-select-field");
                   });
-                
+
                 }else{
                   $("label.select_check_box").hide();
                     $("button.btn.hide_checkout_btn").show();
