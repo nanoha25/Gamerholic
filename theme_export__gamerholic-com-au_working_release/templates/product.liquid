@@ -1,1 +1,10 @@
+{% if product.tag contains 'pre-order' %}
+  {% for collection in product.collections %}
+        {% if collection.title == 'pre-order' %}
+          {% assign preorder = "true" %}
+        {% endif %}
+      {% endfor %}
+  {% include 'product-page' %}
+{% else %}
 {% include 'product-page' %}
+{% endif %}

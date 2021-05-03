@@ -163,7 +163,18 @@
           <div class="line-seperator"></div>
           
  		  {% if preorder %}
+          {%assign datestatus = true %}
+          {% for tag in product.tags %}
+            {% if tag contains 'date' %}
+              {% assign date = tag | remove: 'date-' %}
+          	  <h3>Date released: {{date}} </h3>
+                {%assign datestatus = false %}
+              {% break %}
+              {% endif  %}
+          {% endfor %}
+          {% if datestatus and product.variants.first.barcode != blank %}
             <h3>Date released: {{product.variants.first.barcode}} </h3>
+          {% endif %}
             <div class="line-seperator"></div>
           {% endif %}
           
