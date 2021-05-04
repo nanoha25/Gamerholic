@@ -107,6 +107,12 @@ body {
   transition: color 0.5s;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
  /* Font Size */
 body {font-size: 13px; color: #333}
@@ -1308,7 +1314,9 @@ input[type=number]::-webkit-outer-spin-button {
 #footer-payment-logo {
   margin-top: 10px;
   height:70px;
-  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  align-content:center;
 }
 
 .html-fix {
