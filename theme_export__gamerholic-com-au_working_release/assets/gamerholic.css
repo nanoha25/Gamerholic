@@ -1312,6 +1312,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #footer-payment-logo {
+  display:block;
   margin-top: 10px;
   height:70px;
   margin-left:auto;
