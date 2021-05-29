@@ -176,8 +176,6 @@ p {font-size: 1em}
   overflow: hidden;
   padding:0;
   vertical-align: middle;
-  display: flex;
-  justify-content: space-evenly;
 }
 
 .top-nav li {
@@ -261,6 +259,8 @@ p {font-size: 1em}
     height: 50px;
     line-height: 50px;
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
   }
   
   .middle-nav .logo {
