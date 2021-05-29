@@ -176,6 +176,8 @@ p {font-size: 1em}
   overflow: hidden;
   padding:0;
   vertical-align: middle;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .top-nav li {
