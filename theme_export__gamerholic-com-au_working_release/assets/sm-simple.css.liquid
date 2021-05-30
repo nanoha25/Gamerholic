@@ -49,7 +49,7 @@
   border-top: 0;
 }
 .sm-simple ul {
-  background: rgba(179, 179, 179, 0.1);
+  background: rgba(255, 0, 255, 0.1);
 }
 .sm-simple ul a, .sm-simple ul a:hover, .sm-simple ul a:focus, .sm-simple ul a:active {
   font-size: 14px;
@@ -128,7 +128,7 @@
     color: #333;
   }
   .sm-simple a:hover, .sm-simple a:focus, .sm-simple a:active, .sm-simple a.highlighted {
-    background: #dbdbdb;
+    background: #1eff00;
   }
   .sm-simple a.current {
     background: #555555;
@@ -271,6 +271,7 @@
   height: 0;
   font: 0px/0 serif;
   overflow: hidden;
+  justify-items: stretch;
 }
 
 .nav-brand {
@@ -282,7 +283,7 @@
 
 .nav-brand a {
   display: flex;
-  color: #555;
+  color: rgb(0, 4, 255);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: normal;
@@ -304,7 +305,7 @@
     float: left;
     clear: none;
     display: flex;
-    justify-content: space-between;
+    justify-self: stretch;
   }
 }
 
