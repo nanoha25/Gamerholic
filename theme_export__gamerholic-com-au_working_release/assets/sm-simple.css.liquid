@@ -6,10 +6,10 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 .sm-simple a, .sm-simple a:hover, .sm-simple a:focus, .sm-simple a:active {
-  padding: 13px 30px;
+  padding: 13px 20px;
   /* make room for the toggle button (sub indicator) */
-  padding-right: 90px;
-  color: #138622;
+  padding-right: 58px;
+  color: #666666;
   font-family: "Ubuntu", "Helvetica Nueu", Arial, Helvetica, sans-serif;
   font-size: 13px;
   font-weight: bold;
@@ -17,11 +17,11 @@
   text-decoration: none;
 }
 .sm-simple a.current {
-  background: #e7d80a;
-  color: rgb(255, 0, 0);
+  background: #555555;
+  color: white;
 }
 .sm-simple a.disabled {
-  color: #993636;
+  color: #cccccc;
 }
 .sm-simple a span.sub-arrow {
   position: absolute;
@@ -35,21 +35,21 @@
   font: bold 14px/34px monospace !important;
   text-align: center;
   text-shadow: none;
-  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.08);
 }
 .sm-simple a.highlighted span.sub-arrow:before {
   display: block;
   content: '-';
 }
 .sm-simple li {
-  background: none;
-  border-top: 1px solid rgb(0, 0, 0);
+  background: 
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 .sm-simple > li:first-child {
   border-top: 0;
 }
 .sm-simple ul {
-  background: rgb(255, 0, 255);
+  background: rgba(179, 179, 179, 0.1);
 }
 .sm-simple ul a, .sm-simple ul a:hover, .sm-simple ul a:focus, .sm-simple ul a:active {
   font-size: 14px;
@@ -108,7 +108,6 @@
 
   .sm-simple a {
     white-space: nowrap;
-    display: block;
   }
 
   .sm-simple ul a, .sm-simple.sm-vertical a {
@@ -121,26 +120,25 @@
 
   /* ...end */
   .sm-simple {
-    background: #00ffff;
+    background: #F9FAFA;
   }
   .sm-simple a, .sm-simple a:hover, .sm-simple a:focus, .sm-simple a:active, .sm-simple a.highlighted {
     padding: 11px 20px;
-    color: rgb(93, 87, 180);
+    color: #333;
   }
   .sm-simple a:hover, .sm-simple a:focus, .sm-simple a:active, .sm-simple a.highlighted {
-    background: #1eff00;
+    background: #dbdbdb;
   }
   .sm-simple a.current {
     background: #555555;
-    color: rgb(255, 0, 0);
+    color: white;
   }
   .sm-simple a.disabled {
-    background: rgb(255, 0, 0);
-    color: #000000;
+    background: white;
+    color: #cccccc;
   }
   .sm-simple a.has-submenu {
     padding-right: 32px;
-    justify-content: space-between;
   }
   .sm-simple a span.sub-arrow {
     top: 50%;
@@ -156,15 +154,14 @@
   }
   .sm-simple > li {
     border-top: 0;
-    border-left: 1px solid #002e83;
-    justify-content: space-between;
+    border-left: 1px solid #eeeeee;
   }
   .sm-simple > li:first-child {
     border-left: 0;
   }
   .sm-simple ul {
-    border: 1px solid #610000;
-    background: rgb(255, 0, 0);
+    border: 1px solid #bbbbbb;
+    background: white;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -181,7 +178,7 @@
   }
   .sm-simple ul > li {
     border-left: 0;
-    border-top: 1px solid #ffee00;
+    border-top: 1px solid #eeeeee;
   }
   .sm-simple ul > li:first-child {
     border-top: 0;
@@ -192,7 +189,7 @@
     display: none;
     visibility: hidden;
     overflow: hidden;
-    background: rgb(255, 0, 0);
+    background: white;
     height: 20px;
   }
   .sm-simple span.scroll-up-arrow, .sm-simple span.scroll-down-arrow {
@@ -258,11 +255,11 @@
 }
 
 #scroller {
-  background: #00ffff;
+  background: #F9FAFA;
  -moz-box-shadow:    0 3px 10px rgba(0,0,0, 0.5);
     -webkit-box-shadow: 0 3px 10px rgba(0,0,0, 0.5);
     box-shadow:         0 3px 10px rgba(0,0,0, 0.5);
-  display: block;
+
 }
 
 .main-nav:after {
@@ -272,19 +269,16 @@
   height: 0;
   font: 0px/0 serif;
   overflow: hidden;
-  justify-items: stretch;
 }
 
 .nav-brand {
   float: left;
   margin: 0;
-  justify-content: space-between;
-  display: flex; 
 }
 
 .nav-brand a {
-  display: flex;
-  color: rgb(0, 4, 255);
+  display: block;
+  color: #555;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: normal;
@@ -298,15 +292,12 @@
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  justify-content: space-evenly;
 }
 
 @media (min-width: 1300px) {
   #main-menu {
     float: left;
     clear: none;
-    display: flex;
-    justify-self: stretch;
   }
 }
 

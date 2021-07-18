@@ -108,7 +108,6 @@
 
   .sm-simple a {
     white-space: nowrap;
-    display: block;
   }
 
   .sm-simple ul a, .sm-simple.sm-vertical a {
@@ -140,7 +139,6 @@
   }
   .sm-simple a.has-submenu {
     padding-right: 32px;
-    justify-content: space-between;
   }
   .sm-simple a span.sub-arrow {
     top: 50%;
@@ -157,7 +155,6 @@
   .sm-simple > li {
     border-top: 0;
     border-left: 1px solid #eeeeee;
-    justify-content: space-between;
   }
   .sm-simple > li:first-child {
     border-left: 0;
@@ -262,6 +259,7 @@
  -moz-box-shadow:    0 3px 10px rgba(0,0,0, 0.5);
     -webkit-box-shadow: 0 3px 10px rgba(0,0,0, 0.5);
     box-shadow:         0 3px 10px rgba(0,0,0, 0.5);
+
 }
 
 .main-nav:after {
@@ -276,12 +274,10 @@
 .nav-brand {
   float: left;
   margin: 0;
-  justify-content: space-between;
-  display: flex; 
 }
 
 .nav-brand a {
-  display: flex;
+  display: block;
   color: #555;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -296,15 +292,12 @@
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  justify-content: space-evenly;
 }
 
 @media (min-width: 1300px) {
   #main-menu {
     float: left;
     clear: none;
-    display: flex;
-    justify-content: space-between;
   }
 }
 
