@@ -8,7 +8,18 @@
   <a href={{product.url}} class="img-link link-grey">
     <div class="extras">
       <p class="availability1">Available: </p>
-      <p class="availability2">{{product.variants.first.barcode}}</p>
+      {%assign datestatus = true %}
+      {% for tag in product.tags %}
+        {% if tag contains 'date' %}
+          {% assign date = tag | remove: 'date-' %}
+          <p class="availability2">{{date}}</p>
+      		{%assign datestatus = false %}
+          {% break %}
+          {% endif  %}
+      {% endfor %}
+      {% if datestatus and product.variants.first.barcode != blank %}
+      	<p class="availability2">{{product.variants.first.barcode}}</p>
+      {% endif %}
     </div>
 
     <img src="{{product.images[0].src | product_img_url: 'medium'}}" alt="{{ product.title }}">

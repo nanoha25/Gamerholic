@@ -103,22 +103,23 @@
       <div class="hidden-xs1 col-sm-3 col-md-2">
         {%assign collectionName = collection.title | remove: ' &' | remove: ' All'| replace: ' ', '-'%}
 
-
         <div class="side-heading extra-large-gap1">
           <h2>Categories</h2>
         </div>
         {% for tag in collections[collectionName].tags %}
         {% if tag == 'jan' or tag == 'feb' or tag == 'mar' or tag == 'apr' or tag == 'may' or tag == 'jun' or tag == 'jul' or tag == 'aug' or tag == 'sep' or tag == 'oct' or tag == 'nov' or tag == 'dec' %} 
         {% else %}
-        <div class="side-item">
-          <a class="link" href="/collections/{{collection.title | remove: ' &' | remove: ' All'| replace: ' ', '-'| downcase}}/{{tag | replace: ' ', '-' }}"><h3>{{tag}}</h3></a>
-        </div>
+          {% unless tag contains 'pre-order' or tag contains 'date' %}
+            <div class="side-item">
+              <a class="link" href="/collections/{{collection.title | remove: ' &' | remove: ' All'| replace: ' ', '-'| downcase}}/{{tag | replace: ' ', '-' }}"><h3>{{tag}}</h3></a>
+            </div>
+          {% endunless %}
         {% endif %}
         {% endfor %}
 
       </div>
       
-      <div class="hidden-xs1 col-sm-9 col-md-10">
+      <div class="hidden-xs1 col-sm-9 col-md-10 dm-flex">
       {% if current_tags %}
       {% for product in collection.products %}
       <div class="col-sm-4 col-md-3">
